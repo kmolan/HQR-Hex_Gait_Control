@@ -1,3 +1,7 @@
-# robot_control
+# ReadMe
 
-Collects pose and world information about the robot body using vicon system (done), and updates the gait and navigation strategy accordingly (still unwritten). 
+Code written for experiments under obstacle aided-locomotion and gait control, at kod\*lab, a subsidiary of the GRASP Robotics Lab at Upenn. I was supervised direcly under Feifei Qian(https://kodlab.seas.upenn.edu/group/feifei/), and overall worked under Prof. Daniel E. Koditschek (https://www.seas.upenn.edu/~kod/). 
+
+The world information is estimated using the topics published by the VICON Motion Capture system (https://github.com/KumarRobotics/motion_capture_system), and the robot is controlled using the SDK library written by Ghost Robotics (https://ghostrobotics.gitlab.io/SDK).
+
+Collects pose and world information about the hexapedal HQR-Hex robot body using vicon system (done), computes the closest obstacle to each hip (done), and implements the relevenat gait according to desired trajectory (still unwritten).
