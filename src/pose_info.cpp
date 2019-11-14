@@ -128,7 +128,7 @@ void pose_info::quat_2_euler(const geometry_msgs::Quaternion msg, double *add_ro
     tf::Quaternion quat;
     tf::quaternionMsgToTF(msg, quat);
 
-    // the tf::Quaternion has a method to acess roll pitch and yaw
+    // the tf::Quaternion has a method to access roll pitch and yaw
     tf::Matrix3x3(quat).getRPY(*add_roll, *add_pitch, *add_yaw);
 }
 
@@ -146,7 +146,7 @@ void pose_info::transformation_matrices(double roll, double pitch, double yaw, E
     *transformation_matrix = yaw_tf*pitch_tf*roll_tf;
 }
 
-void pose_info::getCoM(double x, double y, double z, Eigen::Matrix4f transformation_matrix, geometry_msgs::PoseStamped *add_com_tf) {
+void pose_info::getCoM(double x, double y, double z, const Eigen::Matrix4f transformation_matrix, geometry_msgs::PoseStamped *add_com_tf) {
 
     Eigen::MatrixXf temp_pos(4,1);
     Eigen::Matrix4f translation_matrix;
@@ -164,7 +164,7 @@ void pose_info::getCoM(double x, double y, double z, Eigen::Matrix4f transformat
     add_com_tf->pose.position.z = temp_pos(2,0);
 }
 
-void pose_info::getHips(geometry_msgs::PoseStamped com_tf, Eigen::Matrix4f transformation_matrix, geometry_msgs::PoseStamped *add_LF_Hip, geometry_msgs::PoseStamped *add_RF_Hip, geometry_msgs::PoseStamped *add_RR_Hip, geometry_msgs::PoseStamped *add_LR_Hip) {
+void pose_info::getHips(const geometry_msgs::PoseStamped com_tf, const Eigen::Matrix4f transformation_matrix, geometry_msgs::PoseStamped *add_LF_Hip, geometry_msgs::PoseStamped *add_RF_Hip, geometry_msgs::PoseStamped *add_RR_Hip, geometry_msgs::PoseStamped *add_LR_Hip) {
 
     Eigen::MatrixXf temp_pos(4,1);
     Eigen::Matrix4f translation_to_origin;
