@@ -8,11 +8,11 @@
 
 pose_info::pose_info() {
 
+    n_ = ros::NodeHandle();
+
     n_.getParam("robot_length", robot_length_);
     n_.getParam("robot_width", robot_width_);
     n_.getParam("hip_offset", hip_offset_);
-
-    n_ = ros::NodeHandle();
 
     n_.getParam("robot_name", robot_obj_name_);
     n_.getParam("log_01_name", log_01_name);
@@ -30,7 +30,6 @@ pose_info::pose_info() {
     n_.getParam("log_13_name", log_13_name);
     n_.getParam("log_14_name", log_14_name);
     n_.getParam("log_15_name", log_15_name);
-
 
     pose_sub = n_.subscribe(robot_obj_name_, 1, &pose_info::pose_callback, this); //Gets the position and orientation of body in vicon space
 
@@ -51,8 +50,8 @@ pose_info::pose_info() {
     log15_sub = n_.subscribe(log_15_name, 1 , log15_pos);
 
     actual_pose_ =  n_.advertise<geometry_msgs::PoseStamped>("Body_pose", 1); //publishes the true CoM of the body
-    yaw_angle_ =  n_.advertise<std_msgs::Float64>("Body_yaw", 1); //Converted yaw from the quarternion
-    pitch_angle_ = n_.advertise<std_msgs::Float64>("Body_pitch", 1); //Converted pitch from the quarternion
+    yaw_angle_ =  n_.advertise<std_msgs::Float64>("Body_yaw", 1); //Converted yaw from the quaternion
+    pitch_angle_ = n_.advertise<std_msgs::Float64>("Body_pitch", 1); //Converted pitch from the quaternion
 
     LF_Hip_pub_ =  n_.advertise<geometry_msgs::PoseStamped>("LF_Hip_pose", 1); //publishes the position of the LF Hip
     RF_Hip_pub_ =  n_.advertise<geometry_msgs::PoseStamped>("RF_Hip_pose", 1); //publishes the position of the RF Hip
@@ -124,7 +123,7 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
 
 void pose_info::quat_2_euler(const geometry_msgs::Quaternion msg, double *add_roll, double *add_pitch, double *add_yaw) {
 
-    // the incoming geometry_msgs::Quaternion is transformed to a tf::Quaterion
+    // the incoming geometry_msgs::Quaternion is transformed to a tf::Quaternion
     tf::Quaternion quat;
     tf::quaternionMsgToTF(msg, quat);
 
