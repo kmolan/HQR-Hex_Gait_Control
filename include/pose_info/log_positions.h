@@ -5,22 +5,6 @@ Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 
 float log_positions[15];
 
-ros::Subscriber log01_sub;
-ros::Subscriber log02_sub;
-ros::Subscriber log03_sub;
-ros::Subscriber log04_sub;
-ros::Subscriber log05_sub;
-ros::Subscriber log06_sub;
-ros::Subscriber log07_sub;
-ros::Subscriber log08_sub;
-ros::Subscriber log09_sub;
-ros::Subscriber log10_sub;
-ros::Subscriber log11_sub;
-ros::Subscriber log12_sub;
-ros::Subscriber log13_sub;
-ros::Subscriber log14_sub;
-ros::Subscriber log15_sub;
-
 void log01_pos(const geometry_msgs::PoseStamped::ConstPtr &msg){
     log_positions[0] = msg->pose.position.x;
 }

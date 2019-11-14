@@ -1,0 +1,11 @@
+<launch>
+
+ <!-- Parameters -->
+
+  <rosparam command="load" file="$(find pose_info)/config/pose_info_params.yaml" />
+
+  <!-- nodes -->
+
+  <node pkg="pose_info" name="pose_info" type="pose_info" output="screen"/>
+
+</launch>
