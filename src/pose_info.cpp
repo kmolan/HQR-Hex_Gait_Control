@@ -8,56 +8,56 @@
 
 pose_info::pose_info() {
 
-    n.getParam("robot_length", robot_length_);
-    n.getParam("robot_width", robot_width_);
-    n.getParam("hip_offset", hip_offset_);
+    n_.getParam("robot_length", robot_length_);
+    n_.getParam("robot_width", robot_width_);
+    n_.getParam("hip_offset", hip_offset_);
 
-    n = ros::NodeHandle();
+    n_ = ros::NodeHandle();
 
-    n.getParam("robot_name", robot_obj_name_);
-    n.getParam("log_01_name", log_01_name);
-    n.getParam("log_02_name", log_02_name);
-    n.getParam("log_03_name", log_03_name);
-    n.getParam("log_04_name", log_04_name);
-    n.getParam("log_05_name", log_05_name);
-    n.getParam("log_06_name", log_06_name);
-    n.getParam("log_07_name", log_07_name);
-    n.getParam("log_08_name", log_08_name);
-    n.getParam("log_09_name", log_09_name);
-    n.getParam("log_10_name", log_10_name);
-    n.getParam("log_11_name", log_11_name);
-    n.getParam("log_12_name", log_12_name);
-    n.getParam("log_13_name", log_13_name);
-    n.getParam("log_14_name", log_14_name);
-    n.getParam("log_15_name", log_15_name);
+    n_.getParam("robot_name", robot_obj_name_);
+    n_.getParam("log_01_name", log_01_name);
+    n_.getParam("log_02_name", log_02_name);
+    n_.getParam("log_03_name", log_03_name);
+    n_.getParam("log_04_name", log_04_name);
+    n_.getParam("log_05_name", log_05_name);
+    n_.getParam("log_06_name", log_06_name);
+    n_.getParam("log_07_name", log_07_name);
+    n_.getParam("log_08_name", log_08_name);
+    n_.getParam("log_09_name", log_09_name);
+    n_.getParam("log_10_name", log_10_name);
+    n_.getParam("log_11_name", log_11_name);
+    n_.getParam("log_12_name", log_12_name);
+    n_.getParam("log_13_name", log_13_name);
+    n_.getParam("log_14_name", log_14_name);
+    n_.getParam("log_15_name", log_15_name);
 
 
-    pose_sub = n.subscribe(robot_obj_name_, 1, &pose_info::pose_callback, this); //Gets the position and orientation of body in vicon space
+    pose_sub = n_.subscribe(robot_obj_name_, 1, &pose_info::pose_callback, this); //Gets the position and orientation of body in vicon space
 
-    log01_sub = n.subscribe(log_01_name, 1 , log01_pos); //A subscriber for each obstacle in the vicon workspace
-    log02_sub = n.subscribe(log_02_name, 1 , log02_pos);
-    log03_sub = n.subscribe(log_03_name, 1 , log03_pos);
-    log04_sub = n.subscribe(log_04_name, 1 , log04_pos);
-    log05_sub = n.subscribe(log_05_name, 1 , log05_pos);
-    log06_sub = n.subscribe(log_06_name, 1 , log06_pos);
-    log07_sub = n.subscribe(log_07_name, 1 , log07_pos);
-    log08_sub = n.subscribe(log_08_name, 1 , log08_pos);
-    log09_sub = n.subscribe(log_09_name, 1 , log09_pos);
-    log10_sub = n.subscribe(log_10_name, 1 , log10_pos);
-    log11_sub = n.subscribe(log_11_name, 1 , log11_pos);
-    log12_sub = n.subscribe(log_12_name, 1 , log12_pos);
-    log13_sub = n.subscribe(log_13_name, 1 , log13_pos);
-    log14_sub = n.subscribe(log_14_name, 1 , log14_pos);
-    log15_sub = n.subscribe(log_15_name, 1 , log15_pos);
+    log01_sub = n_.subscribe(log_01_name, 1 , log01_pos); //A subscriber for each obstacle in the vicon workspace
+    log02_sub = n_.subscribe(log_02_name, 1 , log02_pos);
+    log03_sub = n_.subscribe(log_03_name, 1 , log03_pos);
+    log04_sub = n_.subscribe(log_04_name, 1 , log04_pos);
+    log05_sub = n_.subscribe(log_05_name, 1 , log05_pos);
+    log06_sub = n_.subscribe(log_06_name, 1 , log06_pos);
+    log07_sub = n_.subscribe(log_07_name, 1 , log07_pos);
+    log08_sub = n_.subscribe(log_08_name, 1 , log08_pos);
+    log09_sub = n_.subscribe(log_09_name, 1 , log09_pos);
+    log10_sub = n_.subscribe(log_10_name, 1 , log10_pos);
+    log11_sub = n_.subscribe(log_11_name, 1 , log11_pos);
+    log12_sub = n_.subscribe(log_12_name, 1 , log12_pos);
+    log13_sub = n_.subscribe(log_13_name, 1 , log13_pos);
+    log14_sub = n_.subscribe(log_14_name, 1 , log14_pos);
+    log15_sub = n_.subscribe(log_15_name, 1 , log15_pos);
 
-    actual_pose =  n.advertise<geometry_msgs::PoseStamped>("Body_pose", 1); //publishes the true CoM of the body
-    yaw_angle =  n.advertise<std_msgs::Float64>("Body_yaw", 1); //Converted yaw from the quarternion
-    pitch_angle = n.advertise<std_msgs::Float64>("Body_pitch", 1); //Converted pitch from the quarternion
+    actual_pose_ =  n_.advertise<geometry_msgs::PoseStamped>("Body_pose", 1); //publishes the true CoM of the body
+    yaw_angle_ =  n_.advertise<std_msgs::Float64>("Body_yaw", 1); //Converted yaw from the quarternion
+    pitch_angle_ = n_.advertise<std_msgs::Float64>("Body_pitch", 1); //Converted pitch from the quarternion
 
-    LF_Hip_pub =  n.advertise<geometry_msgs::PoseStamped>("LF_Hip_pose", 1); //publishes the position of the LF Hip
-    RF_Hip_pub =  n.advertise<geometry_msgs::PoseStamped>("RF_Hip_pose", 1); //publishes the position of the RF Hip
-    RR_Hip_pub =  n.advertise<geometry_msgs::PoseStamped>("RR_Hip_pose", 1); //publishes the position of the RR Hip
-    LR_Hip_pub =  n.advertise<geometry_msgs::PoseStamped>("LR_Hip_pose", 1); //publishes the position of the LR Hip
+    LF_Hip_pub_ =  n_.advertise<geometry_msgs::PoseStamped>("LF_Hip_pose", 1); //publishes the position of the LF Hip
+    RF_Hip_pub_ =  n_.advertise<geometry_msgs::PoseStamped>("RF_Hip_pose", 1); //publishes the position of the RF Hip
+    RR_Hip_pub_ =  n_.advertise<geometry_msgs::PoseStamped>("RR_Hip_pose", 1); //publishes the position of the RR Hip
+    LR_Hip_pub_ =  n_.advertise<geometry_msgs::PoseStamped>("LR_Hip_pose", 1); //publishes the position of the LR Hip
 }
 
 void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_msg) {
@@ -107,18 +107,18 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
     yaw_msg.data = yaw;
     pitch_msg.data = pitch;
 
-    yaw_angle.publish(yaw_msg);
-    pitch_angle.publish(pitch_msg);
+    yaw_angle_.publish(yaw_msg);
+    pitch_angle_.publish(pitch_msg);
 
 //        std::cout<< "Yaw is " << yaw << std::endl; //x axis is from log 1 to log 15, such that log 1 is most negative
 //        std::cout<< "Pitch is " << pitch << std::endl;
 
-    actual_pose.publish(com_tf);
+    actual_pose_.publish(com_tf);
 
-    LF_Hip_pub.publish(LF_Hip);
-    RF_Hip_pub.publish(RF_Hip);
-    RR_Hip_pub.publish(RR_Hip);
-    LR_Hip_pub.publish(LR_Hip);
+    LF_Hip_pub_.publish(LF_Hip);
+    RF_Hip_pub_.publish(RF_Hip);
+    RR_Hip_pub_.publish(RR_Hip);
+    LR_Hip_pub_.publish(LR_Hip);
 
 }
 

@@ -2,8 +2,6 @@
 Consult pose_info.cpp for specific implementations.
 Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 
-//_ private
-
 #pragma once
 
 #include <ros/ros.h>
@@ -46,7 +44,7 @@ private:
     double hip_offset_; //HQR_Hex has the leg hip not directly attached the the body, but at a vertical offset of 0.05m
 
     //ROS stuff
-    ros::NodeHandle n;
+    ros::NodeHandle n_;
 
     std::string robot_obj_name_;  //Name of the robot object created in vicon
     std::string log_01_name; //Names of the log objects in vicon
@@ -84,13 +82,13 @@ private:
 
 
     //Almost all the publishers are mostly for debugging purposes. I was plotting them on PlotJuggler
-    ros::Publisher actual_pose; //Publishes actual com of the body
-    ros::Publisher yaw_angle; //publishes yaw angle of the robot com
-    ros::Publisher pitch_angle; //publishes pitch angle of the robot com
-    ros::Publisher LF_Hip_pub; //publishes left front hip position
-    ros::Publisher RF_Hip_pub; //publishes right front hip position
-    ros::Publisher RR_Hip_pub; //publishes right rear hip position
-    ros::Publisher LR_Hip_pub; //publishes left rear position
+    ros::Publisher actual_pose_; //Publishes actual com of the body
+    ros::Publisher yaw_angle_; //publishes yaw angle of the robot com
+    ros::Publisher pitch_angle_; //publishes pitch angle of the robot com
+    ros::Publisher LF_Hip_pub_; //publishes left front hip position
+    ros::Publisher RF_Hip_pub_; //publishes right front hip position
+    ros::Publisher RR_Hip_pub_; //publishes right rear hip position
+    ros::Publisher LR_Hip_pub_; //publishes left rear position
 
 };
 
