@@ -26,15 +26,15 @@ public:
 
     void pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_msg);
 
-    void quat_2_euler(const geometry_msgs::Quaternion msg, double* add_roll, double* add_pitch, double* add_yaw);
+    static void quat_2_euler(geometry_msgs::Quaternion msg, double* add_roll, double* add_pitch, double* add_yaw);
 
-    void transformation_matrices(double roll, double pitch, double yaw, Eigen::Matrix4f* transformation_matrix);
+    static void transformation_matrices(double roll, double pitch, double yaw, Eigen::Matrix4f* transformation_matrix);
 
-    void getCoM(double x, double y, double z, Eigen::Matrix4f transformation_matrix, geometry_msgs::PoseStamped* add_com_tf);
+    static void getCoM(double x, double y, double z, const Eigen::Matrix4f& transformation_matrix, geometry_msgs::PoseStamped* add_com_tf);
 
-    void getHips(geometry_msgs::PoseStamped com_tf, Eigen::Matrix4f transformation_matrix, geometry_msgs::PoseStamped* add_LF_Hip, geometry_msgs::PoseStamped* add_RF_Hip, geometry_msgs::PoseStamped* add_RR_Hip, geometry_msgs::PoseStamped* add_LR_Hip);
+    void getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::Matrix4f& transformation_matrix, geometry_msgs::PoseStamped* add_LF_Hip, geometry_msgs::PoseStamped* add_RF_Hip, geometry_msgs::PoseStamped* add_RR_Hip, geometry_msgs::PoseStamped* add_LR_Hip);
 
-    void closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int* LF_obs, int* RF_obs, int* RR_obs, int* LR_obs);
+    static void closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int* LF_obs, int* RF_obs, int* RR_obs, int* LR_obs);
 
 private:
 
