@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: pose_info
+Description: Description of pose_info
+Version: 0.0.0
+Cflags: 
+Libs: -L/usr/local/lib 
+Requires: 
