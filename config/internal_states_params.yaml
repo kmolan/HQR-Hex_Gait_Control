@@ -1,0 +1,6 @@
+#topic for motor positions being sent from raspberry pi
+motor_LF_pos_name: "random1"
+motor_RF_pos_name: "random2"
+motor_RR_pos_name: "random3"
+motor_LR_pos_name: "random4"
+
