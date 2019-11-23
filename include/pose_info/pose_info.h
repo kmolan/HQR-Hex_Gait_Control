@@ -1,21 +1,21 @@
-/** Only contains declarations and function headers.
-Consult pose_info.cpp for specific implementations.
+/** Calculates the true CoM of the robot body and returns the closest
+ * Obstacle to each leg, plus the overall trajectory.
 Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 
 #pragma once
 
 #include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
-#include <std_msgs/Float64.h>
+#include <ros/ros.h>
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Quaternion.h>
 #include <tf/transform_datatypes.h>
-#include <math.h>
+#include <cmath>
 #include <string>
 #include <Eigen/Geometry>
 #include <Eigen/Dense>
 #include <complex>
-#include <cmath>
+#include <std_msgs/Float64.h>
 
 #define Pi 3.142859
 
@@ -39,14 +39,14 @@ public:
 private:
 
     //Physical parameters of the robot
-    double robot_length_; //Length of the robot body in metres
-    double robot_width_; //Width of the robot body in metres
-    double hip_offset_; //HQR_Hex has the leg hip not directly attached the the body, but at a vertical offset of 0.05m
+    double robot_length; //Length of the robot body in metres
+    double robot_width; //Width of the robot body in metres
+    double hip_offset; //HQR_Hex has the leg hip not directly attached the the body, but at a vertical offset of 0.05m
 
     //ROS stuff
     ros::NodeHandle n_;
 
-    std::string robot_obj_name_;  //Name of the robot object created in vicon
+    std::string robot_obj_name;  //Name of the robot object created in vicon
     std::string log_01_name; //Names of the log objects in vicon
     std::string log_02_name;
     std::string log_03_name;
@@ -80,16 +80,17 @@ private:
     ros::Subscriber log14_sub;
     ros::Subscriber log15_sub;
 
-
-    //Almost all the publishers are mostly for debugging purposes. I was plotting them on PlotJuggler
-    ros::Publisher actual_pose_; //Publishes actual com of the body
-    ros::Publisher yaw_angle_; //publishes yaw angle of the robot com
-    ros::Publisher pitch_angle_; //publishes pitch angle of the robot com
-    ros::Publisher LF_Hip_pub_; //publishes left front hip position
-    ros::Publisher RF_Hip_pub_; //publishes right front hip position
-    ros::Publisher RR_Hip_pub_; //publishes right rear hip position
-    ros::Publisher LR_Hip_pub_; //publishes left rear position
-
+    ros::Publisher actual_pose; //Publishes actual com of the body
+    ros::Publisher yaw_angle; //publishes yaw angle of the robot com
+    ros::Publisher pitch_angle; //publishes pitch angle of the robot com
+    ros::Publisher LF_Hip_pub; //publishes left front hip position
+    ros::Publisher RF_Hip_pub; //publishes right front hip position
+    ros::Publisher RR_Hip_pub; //publishes right rear hip position
+    ros::Publisher LR_Hip_pub; //publishes left rear position
+    ros::Publisher LF_closest_obs; //publishes the closest obstacle to LF
+    ros::Publisher RF_closest_obs; //publishes the closest obstacle to RF
+    ros::Publisher RR_closest_obs; //publishes the closest obstacle to RR
+    ros::Publisher LR_closest_obs; //publishes the closest obstacle to LR
 };
 
 float dist(double obs, double logpos){ //Helper function that returns the euclidean distance between two points

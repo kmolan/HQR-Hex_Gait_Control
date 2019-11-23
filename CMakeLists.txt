@@ -3,6 +3,7 @@ project(pose_info)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 find_package(catkin REQUIRED COMPONENTS
   ackermann_msgs
   geometry_msgs
@@ -11,10 +12,26 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
+  message_generation
 )
+
 find_package(Eigen3 REQUIRED)
 
-catkin_package()
+add_message_files(
+    FILES
+    pose_info_msg.msg
+)
+
+generate_messages(
+    DEPENDENCIES
+    std_msgs
+    geometry_msgs
+)
+
+catkin_package(
+  CATKIN_DEPENDS message_runtime
+)
+
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
@@ -22,7 +39,12 @@ include_directories(
 )
 
 add_executable(pose_info src/pose_info.cpp)
+add_executable(internal_states src/internal_states.cpp)
 
 target_link_libraries(pose_info
   ${catkin_LIBRARIES}
+)
+
+target_link_libraries(internal_states
+    ${catkin_LIBRARIES}
 )
