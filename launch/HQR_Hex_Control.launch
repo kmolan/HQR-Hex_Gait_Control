@@ -2,12 +2,12 @@
 
  <!-- Parameters -->
 
-  <rosparam command="load" file="$(find pose_info)/config/pose_info_params.yaml" />
-  <rosparam command="load" file="$(find pose_info)/config/internal_states_params.yaml" />
+  <rosparam command="load" file="$(find hqrhex_control)/config/pose_info_params.yaml" />
+  <rosparam command="load" file="$(find hqrhex_control)/config/internal_states_params.yaml" />
 
   <!-- nodes -->
 
-  <node pkg="pose_info" name="pose_info" type="pose_info" output="screen"/>
-  <node pkg="pose_info" name="internal_states" type="internal_states" output="screen"/>
+  <node pkg="hqrhex_control" name="pose_info" type="pose_info" output="screen"/>
+  <node pkg="hqrhex_control" name="internal_states" type="internal_states" output="screen"/>
 
 </launch>

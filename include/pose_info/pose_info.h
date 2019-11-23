@@ -17,6 +17,17 @@ Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 #include <complex>
 #include <std_msgs/Float64.h>
 
+#include "hqrhex_control/pose_info_msg.h"
+/* custom msg type:
+ * float64 LF_obs_pos
+ * float64 RF_obs_pos
+ * float64 RR_obs_pos
+ * float64 LR_obs_pos
+ * geometry_msgs/PoseStamped LF_Hip_pose
+ * geometry_msgs/PoseStamped RF_Hip_pose
+ * geometry_msgs/PoseStamped RR_Hip_pose
+ * geometry_msgs/PoseStamped LR_Hip_pose */
+
 #define Pi 3.142859
 
 class pose_info{
@@ -87,10 +98,8 @@ private:
     ros::Publisher RF_Hip_pub; //publishes right front hip position
     ros::Publisher RR_Hip_pub; //publishes right rear hip position
     ros::Publisher LR_Hip_pub; //publishes left rear position
-    ros::Publisher LF_closest_obs; //publishes the closest obstacle to LF
-    ros::Publisher RF_closest_obs; //publishes the closest obstacle to RF
-    ros::Publisher RR_closest_obs; //publishes the closest obstacle to RR
-    ros::Publisher LR_closest_obs; //publishes the closest obstacle to LR
+
+    ros::Publisher msg_out;
 };
 
 float dist(double obs, double logpos){ //Helper function that returns the euclidean distance between two points

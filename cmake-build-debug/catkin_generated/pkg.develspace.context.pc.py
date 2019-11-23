@@ -3,6 +3,6 @@ CATKIN_PACKAGE_PREFIX = ""
 PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include".split(';') if "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include" != "" else []
 PROJECT_CATKIN_DEPENDS = "message_runtime".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
-PROJECT_NAME = "pose_info"
+PROJECT_NAME = "hqrhex_control"
 PROJECT_SPACE_DIR = "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel"
 PROJECT_VERSION = "0.0.0"

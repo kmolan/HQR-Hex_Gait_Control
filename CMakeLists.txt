@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(pose_info)
+project(hqrhex_control)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
@@ -18,14 +18,15 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Eigen3 REQUIRED)
 
 add_message_files(
+    DIRECTORY msg
     FILES
     pose_info_msg.msg
 )
 
 generate_messages(
     DEPENDENCIES
-    std_msgs
     geometry_msgs
+    std_msgs
 )
 
 catkin_package(
@@ -34,6 +35,7 @@ catkin_package(
 
 include_directories(
   include
+  msg
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIRS}
 )

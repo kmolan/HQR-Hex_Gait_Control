@@ -57,10 +57,7 @@ pose_info::pose_info() {
     RR_Hip_pub =  n_.advertise<geometry_msgs::PoseStamped>("RR_Hip_pose", 1); //publishes the position of the RR Hip
     LR_Hip_pub =  n_.advertise<geometry_msgs::PoseStamped>("LR_Hip_pose", 1); //publishes the position of the LR Hip
 
-    LF_closest_obs = n_.advertise<std_msgs::Float64>("LF_closest_obs", 1);
-    RF_closest_obs = n_.advertise<std_msgs::Float64>("RF_closest_obs", 1);
-    RR_closest_obs = n_.advertise<std_msgs::Float64>("RR_closest_obs", 1);
-    LR_closest_obs = n_.advertise<std_msgs::Float64>("LR_closest_obs", 1);
+    msg_out = n_.advertise<hqrhex_control::pose_info_msg>("msg_out", 1);
 }
 
 void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_msg) {
@@ -86,6 +83,8 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
 
     geometry_msgs::PoseStamped LF_Hip, RF_Hip, RR_Hip, LR_Hip;
 
+    hqrhex_control::pose_info_msg msg_out_data;
+
     getHips(com_tf, transformation_matrix, &LF_Hip, &RF_Hip, &RR_Hip, &LR_Hip); //Gets the hip coordinates for all 4 legs
 
     int LF_obs;
@@ -106,10 +105,6 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
 
     std_msgs::Float64 yaw_msg;
     std_msgs::Float64 pitch_msg;
-    std_msgs::Float64 LF_closest_obs_msg;
-    std_msgs::Float64 RF_closest_obs_msg;
-    std_msgs::Float64 RR_closest_obs_msg;
-    std_msgs::Float64 LR_closest_obs_msg;
 
     yaw_msg.data = yaw;
     pitch_msg.data = pitch;
@@ -127,6 +122,12 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
     RR_Hip_pub.publish(RR_Hip);
     LR_Hip_pub.publish(LR_Hip);
 
+    msg_out_data.LF_Hip_pose = LF_Hip;
+    msg_out_data.LF_Hip_pose = RF_Hip;
+    msg_out_data.LF_Hip_pose = RR_Hip;
+    msg_out_data.LF_Hip_pose = LR_Hip;
+
+    msg_out.publish(msg_out_data);
 }
 
 void pose_info::quat_2_euler(const geometry_msgs::Quaternion msg, double *add_roll, double *add_pitch, double *add_yaw) {

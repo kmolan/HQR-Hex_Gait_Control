@@ -129,54 +129,54 @@ file(INSTALL DESTINATION "/usr/local" TYPE FILE FILES "/home/anmolk/kodlab/src/H
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pose_info/msg" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control/msg" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pose_info/cmake" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/pose_info-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control/cmake" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/hqrhex_control-msg-paths.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include/pose_info")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include/hqrhex_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/roseus/ros/pose_info")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/roseus/ros/hqrhex_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/common-lisp/ros/pose_info")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/common-lisp/ros/hqrhex_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/gennodejs/ros/pose_info")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/gennodejs/ros/hqrhex_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/python2.7/dist-packages/pose_info")
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/python2.7/dist-packages/hqrhex_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/python2.7/dist-packages/pose_info")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/python2.7/dist-packages/hqrhex_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/pose_info.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/hqrhex_control.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pose_info/cmake" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/pose_info-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control/cmake" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/hqrhex_control-msg-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pose_info/cmake" TYPE FILE FILES
-    "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/pose_infoConfig.cmake"
-    "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/pose_infoConfig-version.cmake"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control/cmake" TYPE FILE FILES
+    "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/hqrhex_controlConfig.cmake"
+    "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/catkin_generated/installspace/hqrhex_controlConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pose_info" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

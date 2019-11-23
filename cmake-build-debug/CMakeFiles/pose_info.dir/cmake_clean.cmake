@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/pose_info.dir/src/pose_info.cpp.o"
-  "devel/lib/pose_info/pose_info"
-  "devel/lib/pose_info/pose_info.pdb"
+  "devel/lib/hqrhex_control/pose_info"
+  "devel/lib/hqrhex_control/pose_info.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
