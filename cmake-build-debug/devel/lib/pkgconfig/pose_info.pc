@@ -1,8 +1,0 @@
-prefix=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel
-
-Name: pose_info
-Description: Description of pose_info
-Version: 0.0.0
-Cflags: -I/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include
-Libs: -L/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib 
-Requires: message_runtime

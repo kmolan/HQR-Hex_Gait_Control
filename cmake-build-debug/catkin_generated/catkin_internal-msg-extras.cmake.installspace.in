@@ -1,2 +1,0 @@
-set(catkin_internal_MESSAGE_FILES "msg/pose_info_msg.msg")
-set(catkin_internal_SERVICE_FILES "")

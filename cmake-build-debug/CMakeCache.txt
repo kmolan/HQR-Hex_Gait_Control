@@ -14,12 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Value Computed by CMake
-(_BINARY_DIR:STATIC=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug
-
-//Value Computed by CMake
-(_SOURCE_DIR:STATIC=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control
-
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -326,12 +320,6 @@ actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 
-//Value Computed by CMake
-catkin_internal_BINARY_DIR:STATIC=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug
-
-//Value Computed by CMake
-catkin_internal_SOURCE_DIR:STATIC=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control
-
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 
@@ -422,12 +410,6 @@ message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
 
 //The directory containing a CMake configuration file for nav_msgs.
 nav_msgs_DIR:PATH=/opt/ros/melodic/share/nav_msgs/cmake
-
-//Value Computed by CMake
-pose_info_BINARY_DIR:STATIC=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug
-
-//Value Computed by CMake
-pose_info_SOURCE_DIR:STATIC=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake

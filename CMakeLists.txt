@@ -30,7 +30,7 @@ generate_messages(
 )
 
 catkin_package(
-  CATKIN_DEPENDS message_runtime
+  CATKIN_DEPENDS message_runtime std_msgs geometry_msgs
 )
 
 include_directories(
@@ -50,3 +50,6 @@ target_link_libraries(pose_info
 target_link_libraries(internal_states
     ${catkin_LIBRARIES}
 )
+
+add_dependencies(pose_info ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(pose_info hqrhex_control_generate_messages_cpp)
