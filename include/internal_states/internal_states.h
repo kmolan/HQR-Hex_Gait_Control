@@ -1,5 +1,6 @@
 /**
  * Keeps track of the motor positions of the robot, as broadcasted by raspberry pi.
+ * Sends it to the controller node as a bundled message
  * Written by Anmol Kathail (anmolk@seas.upenn.edu)
  **/
 
@@ -13,11 +14,33 @@
 
 class internal_states{
 public:
+    /*!
+     * @brief default constructor
+     */
     internal_states();
 
+    /*!
+     * @brief subscribes to the position of the Left Front Hip
+     * @param pose_msg the const pointer containing pose information
+     */
     void LF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
+
+    /*!
+     * @brief subscribes to the position of the Right Front Hip
+     * @param pose_msg the const pointer containing pose information
+     */
     void RF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
+
+    /*!
+     * @brief subscribes to the position of the Right Rear Hip
+     * @param pose_msg the const pointer containing pose information
+     */
     void RR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
+
+    /*!
+     * @brief subscribes to the position of the Left Rear Hip
+     * @param pose_msg the const pointer containing pose information
+     */
     void LR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
 
     void calculate_contact_pos();

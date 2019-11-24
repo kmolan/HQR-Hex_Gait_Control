@@ -18,15 +18,13 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Eigen3 REQUIRED)
 
 add_message_files(
-    DIRECTORY msg
     FILES
     pose_info_msg.msg
 )
 
 generate_messages(
     DEPENDENCIES
-    geometry_msgs
-    std_msgs
+    geometry_msgs std_msgs
 )
 
 catkin_package(
@@ -51,5 +49,4 @@ target_link_libraries(internal_states
     ${catkin_LIBRARIES}
 )
 
-add_dependencies(pose_info ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(pose_info hqrhex_control_generate_messages_cpp)
