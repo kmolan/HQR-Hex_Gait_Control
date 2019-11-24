@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debu
 include CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/progress.make
 
 CMakeFiles/hqrhex_control_generate_messages_nodejs: devel/share/gennodejs/ros/hqrhex_control/msg/pose_info_msg.js
+CMakeFiles/hqrhex_control_generate_messages_nodejs: devel/share/gennodejs/ros/hqrhex_control/msg/internal_states_msg.js
 
 
 devel/share/gennodejs/ros/hqrhex_control/msg/pose_info_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -66,8 +67,14 @@ devel/share/gennodejs/ros/hqrhex_control/msg/pose_info_msg.js: /opt/ros/melodic/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from hqrhex_control/pose_info_msg.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg -Ihqrhex_control:/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p hqrhex_control -o /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/gennodejs/ros/hqrhex_control/msg
 
+devel/share/gennodejs/ros/hqrhex_control/msg/internal_states_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/hqrhex_control/msg/internal_states_msg.js: ../msg/internal_states_msg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from hqrhex_control/internal_states_msg.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg -Ihqrhex_control:/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p hqrhex_control -o /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/share/gennodejs/ros/hqrhex_control/msg
+
 hqrhex_control_generate_messages_nodejs: CMakeFiles/hqrhex_control_generate_messages_nodejs
 hqrhex_control_generate_messages_nodejs: devel/share/gennodejs/ros/hqrhex_control/msg/pose_info_msg.js
+hqrhex_control_generate_messages_nodejs: devel/share/gennodejs/ros/hqrhex_control/msg/internal_states_msg.js
 hqrhex_control_generate_messages_nodejs: CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/build.make
 
 .PHONY : hqrhex_control_generate_messages_nodejs

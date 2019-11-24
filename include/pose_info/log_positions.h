@@ -3,7 +3,7 @@ Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 
 #pragma once
 
-float log_positions[15];
+double log_positions[15]; //TODO: Remove this asap, implement boost::bind
 
 void log01_pos(const geometry_msgs::PoseStamped::ConstPtr &msg){
     log_positions[0] = msg->pose.position.x;

@@ -201,6 +201,16 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="_hqrhex_control_generate_messages_check_deps_internal_states_msg">
+				<Option working_dir="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 _hqrhex_control_generate_messages_check_deps_internal_states_msg"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="sensor_msgs_generate_messages_cpp">
 				<Option working_dir="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug"/>
 				<Option type="4"/>

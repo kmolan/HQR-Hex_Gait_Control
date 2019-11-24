@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hqrhex_control_generate_messages_eus"
   "devel/share/roseus/ros/hqrhex_control/manifest.l"
+  "devel/share/roseus/ros/hqrhex_control/msg/internal_states_msg.l"
   "devel/share/roseus/ros/hqrhex_control/msg/pose_info_msg.l"
 )
 

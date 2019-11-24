@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hqrhex_control_generate_messages_nodejs"
+  "devel/share/gennodejs/ros/hqrhex_control/msg/internal_states_msg.js"
   "devel/share/gennodejs/ros/hqrhex_control/msg/pose_info_msg.js"
 )
 

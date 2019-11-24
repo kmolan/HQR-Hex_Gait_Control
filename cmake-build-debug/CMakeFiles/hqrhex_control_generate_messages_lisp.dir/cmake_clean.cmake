@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hqrhex_control_generate_messages_lisp"
+  "devel/share/common-lisp/ros/hqrhex_control/msg/internal_states_msg.lisp"
   "devel/share/common-lisp/ros/hqrhex_control/msg/pose_info_msg.lisp"
 )
 

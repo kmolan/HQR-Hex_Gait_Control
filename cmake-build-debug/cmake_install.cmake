@@ -129,7 +129,10 @@ file(INSTALL DESTINATION "/usr/local" TYPE FILE FILES "/home/anmolk/kodlab/src/H
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control/msg" TYPE FILE FILES "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hqrhex_control/msg" TYPE FILE FILES
+    "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
+    "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

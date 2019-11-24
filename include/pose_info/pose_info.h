@@ -17,7 +17,7 @@ Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 #include <complex>
 #include <std_msgs/Float64.h>
 
-/* custom msg type:
+/* custom msg type, container for the pose of 4 leg hips, and the obstacle distances closest to them
  * float64 LF_obs_pos
  * float64 RF_obs_pos
  * float64 RR_obs_pos
@@ -85,18 +85,23 @@ public:
     void getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::Matrix4f& transformation_matrix, geometry_msgs::PoseStamped* add_LF_Hip, geometry_msgs::PoseStamped* add_RF_Hip, geometry_msgs::PoseStamped* add_RR_Hip, geometry_msgs::PoseStamped* add_LR_Hip);
 
     /*!
-     * @brief The logs are all parallel to each other, kept along the y-axis. Shortest distance to any log is the x-coordinate distance of the point to the log
-     * @brief Returns the index (1-indexed) of the closest obstacle to each hip
-     * @param LF_x the x-coordinate of the Left Front Hip to the logs
-     * @param RF_x the x-coordinate of the Right Front Hip to the logs
-     * @param RR_x the x-coordinate of the Right Rear Hip to the logs
-     * @param LR_x the x-coordinate of the Left Rear Hip to the logs
-     * @param LF_obs the index of the obstacle closest to Left Front hip, returned via reference
-     * @param RF_obs the index of the obstacle closest to Right Front hip, returned via reference
-     * @param RR_obs the index of the obstacle closest to Right Rear hip, returned via reference
-     * @param LR_obs the index of the obstacle closest to Left Rear hip, returned via reference
+     * @brief returns the closest obstacle (1-indexed) to each hip, along with the closest distance.
+     * @brief The logs are all placed parallel to the x-axis, so smallest distance for a point would always be
+     * @brief along the x-direction, regardless of the orientation
+     * @param LF_x Left Front Hip's x-coordinate
+     * @param RF_x Right Front Hip's x-coordinate
+     * @param RR_x Right Rear Hip's x-coordinate
+     * @param LR_x Left Rear Hip's x-coordinate
+     * @param LF_obs index of the obstacle closest to Left Front Hip, returned via reference
+     * @param RF_obs index of the obstacle closest to Right Front Hip, returned via reference
+     * @param RR_obs index of the obstacle closest to Right Rear Hip, returned via reference
+     * @param LR_obs index of the obstacle closest to Left Rear Hip, returned via reference
+     * @param LF_obs_dist distance from the obstacle closest to Left Front Hip, returned via reference
+     * @param RF_obs_dist distance from the obstacle closest to Right Front Hip, returned via reference
+     * @param RR_obs_dist distance from the obstacle closest to Right Rear Hip, returned via reference
+     * @param LR_obs_dist distance from the obstacle closest to Left Rear Hip, returned via reference
      */
-    static void closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int* LF_obs, int* RF_obs, int* RR_obs, int* LR_obs);
+    static void closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int* LF_obs, int* RF_obs, int* RR_obs, int* LR_obs, double* LF_obs_dist, double* RF_obs_dist, double* RR_obs_dist, double* LR_obs_dist);
 
 private:
 
@@ -152,7 +157,16 @@ private:
     ros::Publisher RR_Hip_pub; //publishes right rear hip position
     ros::Publisher LR_Hip_pub; //publishes left rear position
 
-    ros::Publisher msg_out; //Bundled msg containing the positions of the 4 hips, with the position of the log closest to it
+    ros::Publisher vicon_data_out; //Bundled msg containing the positions of the 4 hips, with the position of the log closest to it
+
+    int LF_obs;
+    int RF_obs;
+    int RR_obs;
+    int LR_obs;
+    double LF_obs_dist;
+    double RF_obs_dist;
+    double RR_obs_dist;
+    double LR_obs_dist;
 };
 
 /*!

@@ -11,6 +11,7 @@
 #include <cmath>
 #include <string>
 #include <std_msgs/Float64.h>
+#include "hqrhex_control/internal_states_msg.h"
 
 class internal_states{
 public:
@@ -43,27 +44,26 @@ public:
      */
     void LR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
 
-    void calculate_contact_pos();
-
 private:
 
-    struct motor_positions{
-        double motor_LF_pos;
-        double motor_RF_pos;
-        double motor_RR_pos;
-        double motor_LR_pos;
-    }motorpos;
+    ros::NodeHandle is; //Node Handle initialization
 
-    ros::NodeHandle is;
-
-    std::string motor_LF_pos_name;
+    std::string motor_LF_pos_name; //Holds the (4) names of the topic over which motor positions are being advertised
     std::string motor_RF_pos_name;
     std::string motor_RR_pos_name;
     std::string motor_LR_pos_name;
 
-    ros::Subscriber motor_LF_pos_subs;
+    ros::Subscriber motor_LF_pos_subs; //Collects data from raspberry pi advertising motor positions of robot
     ros::Subscriber motor_RF_pos_subs;
     ros::Subscriber motor_RR_pos_subs;
     ros::Subscriber motor_LR_pos_subs;
 
+    ros::Publisher internal_states_data_out; //Publishes over topic "internal_states_out" so controller node can read
+
+    /* custom msg type, container for the position of 4 motors
+    * float64 LF_motor_pos
+    * float64 RF_motor_pos
+    * float64 RR_motor_pos
+    * float64 LR_motor_pos */
+    hqrhex_control::internal_states_msg dataout_msg;
 };

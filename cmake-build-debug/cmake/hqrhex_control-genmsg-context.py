@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
+messages_str = "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
 services_str = ""
 pkg_name = "hqrhex_control"
 dependencies_str = "geometry_msgs;std_msgs"

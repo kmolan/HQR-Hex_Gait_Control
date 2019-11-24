@@ -57,7 +57,7 @@ pose_info::pose_info() {
     RR_Hip_pub =  n_.advertise<geometry_msgs::PoseStamped>("RR_Hip_pose", 1); //publishes the position of the RR Hip
     LR_Hip_pub =  n_.advertise<geometry_msgs::PoseStamped>("LR_Hip_pose", 1); //publishes the position of the LR Hip
 
-    msg_out = n_.advertise<hqrhex_control::pose_info_msg>("msg_out", 1);
+    vicon_data_out = n_.advertise<hqrhex_control::pose_info_msg>("vicon_data_out", 1);
 }
 
 void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_msg) {
@@ -83,16 +83,11 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
 
     geometry_msgs::PoseStamped LF_Hip, RF_Hip, RR_Hip, LR_Hip;
 
-    hqrhex_control::pose_info_msg msg_out_data;
+    hqrhex_control::pose_info_msg vicon_data_out_var;
 
     getHips(com_tf, transformation_matrix, &LF_Hip, &RF_Hip, &RR_Hip, &LR_Hip); //Gets the hip coordinates for all 4 legs
 
-    int LF_obs;
-    int RF_obs;
-    int RR_obs;
-    int LR_obs;
-
-   closestObstacle(LF_Hip.pose.position.x, RF_Hip.pose.position.x, RR_Hip.pose.position.x, LR_Hip.pose.position.x, &LF_obs, &RF_obs, &RR_obs, &LR_obs); //Returns the closest obstacle to each hip
+   closestObstacle(LF_Hip.pose.position.x, RF_Hip.pose.position.x, RR_Hip.pose.position.x, LR_Hip.pose.position.x, &LF_obs, &RF_obs, &RR_obs, &LR_obs, &LF_obs_dist, &RF_obs_dist, &RR_obs_dist, &LR_obs_dist); //Returns the closest obstacle to each hip
 
    std::cout<< "LF: " << LF_obs << std::endl;
    std::cout<< "RF: " << RF_obs << std::endl;
@@ -122,12 +117,16 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
     RR_Hip_pub.publish(RR_Hip);
     LR_Hip_pub.publish(LR_Hip);
 
-    msg_out_data.LF_Hip_pose = LF_Hip;
-    msg_out_data.LF_Hip_pose = RF_Hip;
-    msg_out_data.LF_Hip_pose = RR_Hip;
-    msg_out_data.LF_Hip_pose = LR_Hip;
+    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
+    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
+    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
+    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
+    vicon_data_out_var.LF_Hip_pose = LF_Hip;
+    vicon_data_out_var.LF_Hip_pose = RF_Hip;
+    vicon_data_out_var.LF_Hip_pose = RR_Hip;
+    vicon_data_out_var.LF_Hip_pose = LR_Hip;
 
-    msg_out.publish(msg_out_data);
+    vicon_data_out.publish(vicon_data_out_var);
 }
 
 void pose_info::quat_2_euler(const geometry_msgs::Quaternion msg, double *add_roll, double *add_pitch, double *add_yaw) {
@@ -217,33 +216,33 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
     add_LR_Hip->pose.orientation = com_tf.pose.orientation;
 }
 
-void pose_info::closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int *LF_obs, int *RF_obs, int *RR_obs, int *LR_obs) {
+void pose_info::closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int *LF_obs, int *RF_obs, int *RR_obs, int *LR_obs, double* LF_obs_dist, double* RF_obs_dist, double* RR_obs_dist, double* LR_obs_dist) {
 
-    float min_LF = INT_MAX;
-    float min_RF = INT_MAX;
-    float min_RR = INT_MAX;
-    float min_LR = INT_MAX;
+    *LF_obs_dist = FLT_MAX;
+    *RF_obs_dist = FLT_MAX;
+    *RR_obs_dist = FLT_MAX;
+    *LR_obs_dist = FLT_MAX;
 
     for(int i = 0; i < 15; i++){
 
-        if(dist(LF_x,log_positions[i])< min_LF){
+        if(dist(LF_x,log_positions[i])< *LF_obs_dist){
             *LF_obs = i+1;
-            min_LF = dist(LF_x,log_positions[i]);
+            *LF_obs_dist = dist(LF_x,log_positions[i]);
         }
 
-        if(dist(RF_x,log_positions[i]) < min_RF){
+        if(dist(RF_x,log_positions[i]) < *RF_obs_dist){
             *RF_obs = i+1;
-            min_RF = dist(RF_x,log_positions[i]);
+            *RF_obs_dist = dist(RF_x,log_positions[i]);
         }
 
-        if(dist(RR_x,log_positions[i]) < min_RR){
+        if(dist(RR_x,log_positions[i]) < *RR_obs_dist){
             *RR_obs = i+1;
-            min_RR = dist(RR_x,log_positions[i]);
+            *RR_obs_dist = dist(RR_x,log_positions[i]);
         }
 
-        if(dist(LR_x,log_positions[i]) < min_LR){
+        if(dist(LR_x,log_positions[i]) < *LR_obs_dist){
             *LR_obs = i+1;
-            min_LR = dist(LR_x,log_positions[i]);
+            *LR_obs_dist = dist(LR_x,log_positions[i]);
         }
     }
 }

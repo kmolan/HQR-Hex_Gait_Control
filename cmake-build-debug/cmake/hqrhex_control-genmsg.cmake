@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "hqrhex_control: 1 messages, 0 services")
+message(STATUS "hqrhex_control: 2 messages, 0 services")
 
 set(MSG_I_FLAGS "-Ihqrhex_control:/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
 
@@ -22,6 +22,11 @@ add_custom_target(_hqrhex_control_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "hqrhex_control" "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg" "geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:std_msgs/Header"
 )
 
+get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" NAME_WE)
+add_custom_target(_hqrhex_control_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "hqrhex_control" "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" ""
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -32,6 +37,12 @@ _generate_msg_cpp(hqrhex_control
   "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/hqrhex_control
+)
+_generate_msg_cpp(hqrhex_control
+  "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/hqrhex_control
 )
 
@@ -51,6 +62,8 @@ add_dependencies(hqrhex_control_generate_messages hqrhex_control_generate_messag
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg" NAME_WE)
 add_dependencies(hqrhex_control_generate_messages_cpp _hqrhex_control_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" NAME_WE)
+add_dependencies(hqrhex_control_generate_messages_cpp _hqrhex_control_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(hqrhex_control_gencpp)
@@ -65,6 +78,12 @@ _generate_msg_eus(hqrhex_control
   "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/hqrhex_control
+)
+_generate_msg_eus(hqrhex_control
+  "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/hqrhex_control
 )
 
@@ -84,6 +103,8 @@ add_dependencies(hqrhex_control_generate_messages hqrhex_control_generate_messag
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg" NAME_WE)
 add_dependencies(hqrhex_control_generate_messages_eus _hqrhex_control_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" NAME_WE)
+add_dependencies(hqrhex_control_generate_messages_eus _hqrhex_control_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(hqrhex_control_geneus)
@@ -98,6 +119,12 @@ _generate_msg_lisp(hqrhex_control
   "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/hqrhex_control
+)
+_generate_msg_lisp(hqrhex_control
+  "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/hqrhex_control
 )
 
@@ -117,6 +144,8 @@ add_dependencies(hqrhex_control_generate_messages hqrhex_control_generate_messag
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg" NAME_WE)
 add_dependencies(hqrhex_control_generate_messages_lisp _hqrhex_control_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" NAME_WE)
+add_dependencies(hqrhex_control_generate_messages_lisp _hqrhex_control_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(hqrhex_control_genlisp)
@@ -131,6 +160,12 @@ _generate_msg_nodejs(hqrhex_control
   "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/hqrhex_control
+)
+_generate_msg_nodejs(hqrhex_control
+  "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/hqrhex_control
 )
 
@@ -150,6 +185,8 @@ add_dependencies(hqrhex_control_generate_messages hqrhex_control_generate_messag
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg" NAME_WE)
 add_dependencies(hqrhex_control_generate_messages_nodejs _hqrhex_control_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" NAME_WE)
+add_dependencies(hqrhex_control_generate_messages_nodejs _hqrhex_control_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(hqrhex_control_gennodejs)
@@ -164,6 +201,12 @@ _generate_msg_py(hqrhex_control
   "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/hqrhex_control
+)
+_generate_msg_py(hqrhex_control
+  "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/hqrhex_control
 )
 
@@ -182,6 +225,8 @@ add_dependencies(hqrhex_control_generate_messages hqrhex_control_generate_messag
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/pose_info_msg.msg" NAME_WE)
+add_dependencies(hqrhex_control_generate_messages_py _hqrhex_control_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg/internal_states_msg.msg" NAME_WE)
 add_dependencies(hqrhex_control_generate_messages_py _hqrhex_control_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

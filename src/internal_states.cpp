@@ -17,36 +17,38 @@ internal_states::internal_states(){
     motor_RF_pos_subs = is.subscribe(motor_RF_pos_name, 1, &internal_states::RF_pose_callback, this);
     motor_RR_pos_subs = is.subscribe(motor_RR_pos_name, 1, &internal_states::RR_pose_callback, this);
     motor_LR_pos_subs = is.subscribe(motor_LR_pos_name, 1, &internal_states::LR_pose_callback, this);
+
+    internal_states_data_out = is.advertise<hqrhex_control::internal_states_msg>("internal_states_data_out", 1);
 }
 
 void internal_states::LF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg) {
 
-    motorpos.motor_LF_pos = pose_msg->data;
+    dataout_msg.LF_motor_pos = pose_msg->data;
+    internal_states_data_out.publish(dataout_msg);
 }
 
 void internal_states::RF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg) {
 
-    motorpos.motor_RF_pos = pose_msg->data;
+    dataout_msg.RF_motor_pos = pose_msg->data;
+    internal_states_data_out.publish(dataout_msg);
 }
 
 void internal_states::RR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg) {
 
-    motorpos.motor_RR_pos = pose_msg->data;
+    dataout_msg.RR_motor_pos = pose_msg->data;
+    internal_states_data_out.publish(dataout_msg);
 }
 
 void internal_states::LR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg) {
 
-    motorpos.motor_LR_pos = pose_msg->data;
+    dataout_msg.LR_motor_pos = pose_msg->data;
+    internal_states_data_out.publish(dataout_msg);
 }
-
-void calculate_contact_pos(){
-
-}
-
 
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "internal_states");
     ros::NodeHandle is;
+    internal_states class_init;
     ros::spin();
     return 0;
 }

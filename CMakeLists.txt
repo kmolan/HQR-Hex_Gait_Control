@@ -20,6 +20,7 @@ find_package(Eigen3 REQUIRED)
 add_message_files(
     FILES
     pose_info_msg.msg
+    internal_states_msg.msg
 )
 
 generate_messages(
@@ -50,3 +51,4 @@ target_link_libraries(internal_states
 )
 
 add_dependencies(pose_info hqrhex_control_generate_messages_cpp)
+add_dependencies(internal_states hqrhex_control_generate_messages_cpp)

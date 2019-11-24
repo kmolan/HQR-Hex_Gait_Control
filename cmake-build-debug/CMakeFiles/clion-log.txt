@@ -16,7 +16,7 @@
 -- catkin 0.7.19
 -- BUILD_SHARED_LIBS is on
 -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
--- hqrhex_control: 1 messages, 0 services
+-- hqrhex_control: 2 messages, 0 services
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug
