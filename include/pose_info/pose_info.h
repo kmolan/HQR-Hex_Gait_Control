@@ -85,6 +85,13 @@ public:
     void getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::Matrix4f& transformation_matrix, geometry_msgs::PoseStamped* add_LF_Hip, geometry_msgs::PoseStamped* add_RF_Hip, geometry_msgs::PoseStamped* add_RR_Hip, geometry_msgs::PoseStamped* add_LR_Hip);
 
     /*!
+     * @brief Fills an array of 15 with the position of each obstacle position in x co-ordinate
+     * @param msg Pose of obstacle 'i'
+     * @param i Index of the obstacle being subscribed to (0-indexed)
+     */
+    void find_log_positions(const geometry_msgs::PoseStamped::ConstPtr &msg, int i);
+
+    /*!
      * @brief returns the closest obstacle (1-indexed) to each hip, along with the closest distance.
      * @brief The logs are all placed parallel to the x-axis, so smallest distance for a point would always be
      * @brief along the x-direction, regardless of the orientation
@@ -101,7 +108,7 @@ public:
      * @param RR_obs_dist distance from the obstacle closest to Right Rear Hip, returned via reference
      * @param LR_obs_dist distance from the obstacle closest to Left Rear Hip, returned via reference
      */
-    static void closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int* LF_obs, int* RF_obs, int* RR_obs, int* LR_obs, double* LF_obs_dist, double* RF_obs_dist, double* RR_obs_dist, double* LR_obs_dist);
+    void closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int* LF_obs, int* RF_obs, int* RR_obs, int* LR_obs, double* LF_obs_dist, double* RF_obs_dist, double* RR_obs_dist, double* LR_obs_dist);
 
 private:
 
@@ -110,44 +117,16 @@ private:
     double robot_width; //Width of the robot body in metres
     double hip_offset; //HQR_Hex has the leg hip not directly attached the the body, but at a vertical offset of 0.05m
 
-    //ROS stuff
     ros::NodeHandle n_; //Initializes the node handle
 
     std::string robot_obj_name;  //Name of the robot object created in vicon
 
-    std::string log_01_name; //Names of the log objects in vicon (15 in number)
-    std::string log_02_name;
-    std::string log_03_name;
-    std::string log_04_name;
-    std::string log_05_name;
-    std::string log_06_name;
-    std::string log_07_name;
-    std::string log_08_name;
-    std::string log_09_name;
-    std::string log_10_name;
-    std::string log_11_name;
-    std::string log_12_name;
-    std::string log_13_name;
-    std::string log_14_name;
-    std::string log_15_name;
-
     ros::Subscriber pose_sub; //Subscribes to the robot CoM
 
-    ros::Subscriber log01_sub; //one subscriber for each log (15 in total)
-    ros::Subscriber log02_sub;
-    ros::Subscriber log03_sub;
-    ros::Subscriber log04_sub;
-    ros::Subscriber log05_sub;
-    ros::Subscriber log06_sub;
-    ros::Subscriber log07_sub;
-    ros::Subscriber log08_sub;
-    ros::Subscriber log09_sub;
-    ros::Subscriber log10_sub;
-    ros::Subscriber log11_sub;
-    ros::Subscriber log12_sub;
-    ros::Subscriber log13_sub;
-    ros::Subscriber log14_sub;
-    ros::Subscriber log15_sub;
+    std::vector<ros::Subscriber> log_subs; //Vector of subscribers for each obstacle (15 total)
+    char obs_name[40]; //Topic name for the obstacle's body
+
+    double log_positions[15]; //Array to be filled with position of each obstacle
 
     ros::Publisher actual_pose; //Publishes actual com of the body
     ros::Publisher yaw_angle; //publishes yaw angle of the robot com
@@ -159,14 +138,14 @@ private:
 
     ros::Publisher vicon_data_out; //Bundled msg containing the positions of the 4 hips, with the position of the log closest to it
 
-    int LF_obs;
-    int RF_obs;
-    int RR_obs;
-    int LR_obs;
-    double LF_obs_dist;
-    double RF_obs_dist;
-    double RR_obs_dist;
-    double LR_obs_dist;
+    int LF_obs_index; //index for the obstacle closest to Left Front Hip
+    int RF_obs_index; //index for the obstacle closest to Right Front Hip
+    int RR_obs_index; //index for the obstacle closest to Right Rear Hip
+    int LR_obs_index; //index for the obstacle closest to Left Rear Hip
+    double LF_obs_distance; //distance from the obstacle closest to Left Front Hip
+    double RF_obs_distance; //distance from the obstacle closest to Right Front Hip
+    double RR_obs_distance; //distance from the obstacle closest to Right Rear Hip
+    double LR_obs_distance; //distance from the obstacle closest to Left Rear Hip
 };
 
 /*!

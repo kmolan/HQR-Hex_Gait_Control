@@ -13,6 +13,7 @@ internal_states::internal_states(){
     is.getParam("motor_RR_pos_name",motor_RR_pos_name);
     is.getParam("motor_LR_pos_name",motor_LR_pos_name);
 
+    //TODO: implement boost::bind for a singular callback
     motor_LF_pos_subs = is.subscribe(motor_LF_pos_name, 1, &internal_states::LF_pose_callback, this);
     motor_RF_pos_subs = is.subscribe(motor_RF_pos_name, 1, &internal_states::RF_pose_callback, this);
     motor_RR_pos_subs = is.subscribe(motor_RR_pos_name, 1, &internal_states::RR_pose_callback, this);

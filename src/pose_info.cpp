@@ -2,8 +2,7 @@
  * Obstacle to each leg, plus the overall trajectory.
  * Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 
-#include "pose_info/pose_info.h" //Definitions and function headers
-#include "pose_info/log_positions.h" //Helper functions to extract all the log positions into a float array
+#include "pose_info/pose_info.h"
 
 pose_info::pose_info() {
 
@@ -14,39 +13,16 @@ pose_info::pose_info() {
     n_.getParam("hip_offset", hip_offset);
 
     n_.getParam("robot_name", robot_obj_name);
-    n_.getParam("log_01_name", log_01_name);
-    n_.getParam("log_02_name", log_02_name);
-    n_.getParam("log_03_name", log_03_name);
-    n_.getParam("log_04_name", log_04_name);
-    n_.getParam("log_05_name", log_05_name);
-    n_.getParam("log_06_name", log_06_name);
-    n_.getParam("log_07_name", log_07_name);
-    n_.getParam("log_08_name", log_08_name);
-    n_.getParam("log_09_name", log_09_name);
-    n_.getParam("log_10_name", log_10_name);
-    n_.getParam("log_11_name", log_11_name);
-    n_.getParam("log_12_name", log_12_name);
-    n_.getParam("log_13_name", log_13_name);
-    n_.getParam("log_14_name", log_14_name);
-    n_.getParam("log_15_name", log_15_name);
 
     pose_sub = n_.subscribe(robot_obj_name, 1, &pose_info::pose_callback, this); //Gets the position and orientation of body in vicon space
 
-    log01_sub = n_.subscribe(log_01_name, 1 , log01_pos); //A subscriber for each obstacle in the vicon workspace
-    log02_sub = n_.subscribe(log_02_name, 1 , log02_pos);
-    log03_sub = n_.subscribe(log_03_name, 1 , log03_pos);
-    log04_sub = n_.subscribe(log_04_name, 1 , log04_pos);
-    log05_sub = n_.subscribe(log_05_name, 1 , log05_pos);
-    log06_sub = n_.subscribe(log_06_name, 1 , log06_pos);
-    log07_sub = n_.subscribe(log_07_name, 1 , log07_pos);
-    log08_sub = n_.subscribe(log_08_name, 1 , log08_pos);
-    log09_sub = n_.subscribe(log_09_name, 1 , log09_pos);
-    log10_sub = n_.subscribe(log_10_name, 1 , log10_pos);
-    log11_sub = n_.subscribe(log_11_name, 1 , log11_pos);
-    log12_sub = n_.subscribe(log_12_name, 1 , log12_pos);
-    log13_sub = n_.subscribe(log_13_name, 1 , log13_pos);
-    log14_sub = n_.subscribe(log_14_name, 1 , log14_pos);
-    log15_sub = n_.subscribe(log_15_name, 1 , log15_pos);
+    log_subs.resize(15); //15 obstacles
+
+    for(unsigned short i = 0; i < log_subs.size(); i++){ //TODO: Sometimes one obstacle get updated multiple times in a single loop? Check.
+        sprintf(obs_name, "/vicon/LOG_%02d_10292019/pose", i + 1); //Create a string for the obstacle name
+
+        log_subs[i] = n_.subscribe<geometry_msgs::PoseStamped>(obs_name, 1, boost::bind(&pose_info::find_log_positions, this, _1, i)); //Fill the log_positions array with obstacle positions
+    }
 
     actual_pose =  n_.advertise<geometry_msgs::PoseStamped>("Body_pose", 1); //publishes the true CoM of the body
     yaw_angle =  n_.advertise<std_msgs::Float64>("Body_yaw", 1); //Converted yaw from the quaternion
@@ -87,12 +63,12 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
 
     getHips(com_tf, transformation_matrix, &LF_Hip, &RF_Hip, &RR_Hip, &LR_Hip); //Gets the hip coordinates for all 4 legs
 
-   closestObstacle(LF_Hip.pose.position.x, RF_Hip.pose.position.x, RR_Hip.pose.position.x, LR_Hip.pose.position.x, &LF_obs, &RF_obs, &RR_obs, &LR_obs, &LF_obs_dist, &RF_obs_dist, &RR_obs_dist, &LR_obs_dist); //Returns the closest obstacle to each hip
+   closestObstacle(LF_Hip.pose.position.x, RF_Hip.pose.position.x, RR_Hip.pose.position.x, LR_Hip.pose.position.x, &LF_obs_index, &RF_obs_index, &RR_obs_index, &LR_obs_index, &LF_obs_distance, &RF_obs_distance, &RR_obs_distance, &LR_obs_distance); //Returns the closest obstacle to each hip
 
-   std::cout<< "LF: " << LF_obs << std::endl;
-   std::cout<< "RF: " << RF_obs << std::endl;
-   std::cout<< "RR: " << RR_obs << std::endl;
-   std::cout<< "LR: " << LR_obs << std::endl;
+   std::cout << "LF: " << LF_obs_index << std::endl;
+   std::cout << "RF: " << RF_obs_index << std::endl;
+   std::cout << "RR: " << RR_obs_index << std::endl;
+   std::cout << "LR: " << LR_obs_index << std::endl;
 
     //IMP: Don't convert before obtaining all the other necessary geometric parameters since they need radians only.
     yaw = 180*yaw/Pi; //radians to degrees
@@ -117,10 +93,10 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
     RR_Hip_pub.publish(RR_Hip);
     LR_Hip_pub.publish(LR_Hip);
 
-    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
-    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
-    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
-    vicon_data_out_var.LF_obs_pos = LF_obs_dist;
+    vicon_data_out_var.LF_obs_pos = LF_obs_distance;
+    vicon_data_out_var.LF_obs_pos = LF_obs_distance;
+    vicon_data_out_var.LF_obs_pos = LF_obs_distance;
+    vicon_data_out_var.LF_obs_pos = LF_obs_distance;
     vicon_data_out_var.LF_Hip_pose = LF_Hip;
     vicon_data_out_var.LF_Hip_pose = RF_Hip;
     vicon_data_out_var.LF_Hip_pose = RR_Hip;
@@ -214,6 +190,11 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
     add_LR_Hip->pose.position.z = temp_pos(2,0);
 
     add_LR_Hip->pose.orientation = com_tf.pose.orientation;
+}
+
+void pose_info::find_log_positions(const geometry_msgs::PoseStamped::ConstPtr &msg, int i){
+
+    this->log_positions[i] = msg->pose.position.x;
 }
 
 void pose_info::closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int *LF_obs, int *RF_obs, int *RR_obs, int *LR_obs, double* LF_obs_dist, double* RF_obs_dist, double* RR_obs_dist, double* LR_obs_dist) {

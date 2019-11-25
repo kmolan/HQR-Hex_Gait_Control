@@ -1,23 +1,6 @@
 # robot name in the vicon object space
 robot_name: "/vicon/Yongxin_7Markers/pose"
 
-#Name of each log in the vicon workspace
-log_01_name: "/vicon/LOG_01_10292019/pose"
-log_02_name: "/vicon/LOG_02_10292019/pose"
-log_03_name: "/vicon/LOG_03_10292019/pose"
-log_04_name: "/vicon/LOG_04_10292019/pose"
-log_05_name: "/vicon/LOG_05_10292019/pose"
-log_06_name: "/vicon/LOG_06_10292019/pose"
-log_07_name: "/vicon/LOG_07_10292019/pose"
-log_08_name: "/vicon/LOG_08_10292019/pose"
-log_09_name: "/vicon/LOG_09_10292019/pose"
-log_10_name: "/vicon/LOG_10_10292019/pose"
-log_11_name: "/vicon/LOG_11_10292019/pose"
-log_12_name: "/vicon/LOG_12_10292019/pose"
-log_13_name: "/vicon/LOG_13_10292019/pose"
-log_14_name: "/vicon/LOG_14_10292019/pose"
-log_15_name: "/vicon/LOG_15_10292019/pose"
-
 #Robot physical parameters (in metres)
 robot_length: 0.48
 robot_width: 0.29
