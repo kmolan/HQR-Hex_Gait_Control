@@ -2,7 +2,7 @@
 <package format="2">
   <name>hqrhex_control</name>
   <version>0.0.0</version>
-  <description>pose information</description>
+  <description>behavior control for hqrhex</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

@@ -11,6 +11,12 @@
 #include <cmath>
 #include <string>
 #include <std_msgs/Float64.h>
+
+/* custom msg type, container for the position of 4 motors
+    * float64 LF_motor_pos
+    * float64 RF_motor_pos
+    * float64 RR_motor_pos
+    * float64 LR_motor_pos */
 #include "hqrhex_control/internal_states_msg.h"
 
 class internal_states{
@@ -36,10 +42,5 @@ private:
 
     ros::Publisher internal_states_data_out; //Publishes over topic "internal_states_out" so controller node can read
 
-    /* custom msg type, container for the position of 4 motors
-    * float64 LF_motor_pos
-    * float64 RF_motor_pos
-    * float64 RR_motor_pos
-    * float64 LR_motor_pos */
     hqrhex_control::internal_states_msg dataout_msg;
 };

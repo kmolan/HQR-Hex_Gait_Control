@@ -47,6 +47,70 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="controller_node">
+				<Option output="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/hqrhex_control/controller_node" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/hqrhex_control"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROS_BUILD_SHARED_LIBS=1"/>
+					<Add option="-DROS_PACKAGE_NAME=&quot;hqrhex_control&quot;"/>
+					<Add option="-DROSCONSOLE_BACKEND_LOG4CXX"/>
+					<Add directory="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include"/>
+					<Add directory="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/include"/>
+					<Add directory="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg"/>
+					<Add directory="/opt/ros/melodic/include"/>
+					<Add directory="/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"/>
+					<Add directory="/usr/include/eigen3"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 controller_node"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="controller_node/fast">
+				<Option output="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/hqrhex_control/controller_node" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/lib/hqrhex_control"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROS_BUILD_SHARED_LIBS=1"/>
+					<Add option="-DROS_PACKAGE_NAME=&quot;hqrhex_control&quot;"/>
+					<Add option="-DROSCONSOLE_BACKEND_LOG4CXX"/>
+					<Add directory="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/devel/include"/>
+					<Add directory="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/include"/>
+					<Add directory="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/msg"/>
+					<Add directory="/opt/ros/melodic/include"/>
+					<Add directory="/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"/>
+					<Add directory="/usr/include/eigen3"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 controller_node/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="hqrhex_control_genpy">
 				<Option working_dir="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug"/>
 				<Option type="4"/>
@@ -1012,6 +1076,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/src/controller_node.cpp">
+			<Option target="controller_node"/>
+		</Unit>
 		<Unit filename="/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/src/internal_states.cpp">
 			<Option target="internal_states"/>
 		</Unit>

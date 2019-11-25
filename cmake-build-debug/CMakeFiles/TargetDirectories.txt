@@ -1,6 +1,7 @@
 /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/install/strip.dir
 /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/list_install_components.dir
 /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/test.dir
+/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/controller_node.dir
 /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/hqrhex_control_genpy.dir
 /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/pose_info.dir
 /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles/hqrhex_control_generate_messages_py.dir

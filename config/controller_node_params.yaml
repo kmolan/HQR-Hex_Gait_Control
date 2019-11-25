@@ -1,0 +1,6 @@
+leg_radius: 0.065 #Radius of the leg in metres
+obstacle_radius: 0.055 #Radius of the obstacle in metres
+
+trajectory_threshold: 0.5 #Tune
+trajectory_loop_time: 5.0 #Find better ways
+desired_yaw_angle: 30 #dummy value

@@ -41,14 +41,20 @@ include_directories(
 
 add_executable(pose_info src/pose_info.cpp)
 add_executable(internal_states src/internal_states.cpp)
+add_executable(controller_node src/controller_node.cpp)
 
 target_link_libraries(pose_info
-  ${catkin_LIBRARIES}
+    ${catkin_LIBRARIES}
 )
 
 target_link_libraries(internal_states
     ${catkin_LIBRARIES}
 )
 
+target_link_libraries(controller_node
+    ${catkin_LIBRARIES}
+)
+
 add_dependencies(pose_info hqrhex_control_generate_messages_cpp)
 add_dependencies(internal_states hqrhex_control_generate_messages_cpp)
+add_dependencies(controller_node hqrhex_control_generate_messages_cpp)

@@ -1,6 +1,6 @@
 /** Calculates the true CoM of the robot body and returns the closest
- * Obstacle to each leg, plus the overall trajectory.
-Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
+  * Obstacle to each leg, plus the overall trajectory.
+  * Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
 
 #pragma once
 

@@ -1,5 +1,6 @@
 /**
  * Keeps track of the motor positions of the robot, as broadcasted by raspberry pi.
+ * Sends it to the controller node as a bundled message
  * Written by Anmol Kathail (anmolk@seas.upenn.edu)
  **/
 
