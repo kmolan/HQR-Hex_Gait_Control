@@ -3,7 +3,6 @@
  <!-- Parameters -->
 
   <rosparam command="load" file="$(find hqrhex_control)/config/pose_info_params.yaml" />
-  <rosparam command="load" file="$(find hqrhex_control)/config/internal_states_params.yaml" />
 
   <!-- nodes -->
 

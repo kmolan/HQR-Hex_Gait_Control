@@ -21,42 +21,18 @@ public:
     internal_states();
 
     /*!
-     * @brief subscribes to the position of the Left Front Hip
-     * @param pose_msg the const pointer containing pose information
+     * @brief Updates the position of each leg motor, bundles it into a custom msg, and publishes for controller node to handle
+     * @param pose_msg leg motor angle
+     * @param i iterator (0 is for Right Front hip motor, and cycles CCW)
      */
-    void LF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
-
-    /*!
-     * @brief subscribes to the position of the Right Front Hip
-     * @param pose_msg the const pointer containing pose information
-     */
-    void RF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
-
-    /*!
-     * @brief subscribes to the position of the Right Rear Hip
-     * @param pose_msg the const pointer containing pose information
-     */
-    void RR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
-
-    /*!
-     * @brief subscribes to the position of the Left Rear Hip
-     * @param pose_msg the const pointer containing pose information
-     */
-    void LR_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg);
+    void update_motor_position(const std_msgs::Float64::ConstPtr &pose_msg, int i);
 
 private:
 
     ros::NodeHandle is; //Node Handle initialization
 
-    std::string motor_LF_pos_name; //Holds the (4) names of the topic over which motor positions are being advertised
-    std::string motor_RF_pos_name;
-    std::string motor_RR_pos_name;
-    std::string motor_LR_pos_name;
-
-    ros::Subscriber motor_LF_pos_subs; //Collects data from raspberry pi advertising motor positions of robot
-    ros::Subscriber motor_RF_pos_subs;
-    ros::Subscriber motor_RR_pos_subs;
-    ros::Subscriber motor_LR_pos_subs;
+    std::vector<ros::Subscriber> motor_pos_subs; //Multiple Subscribers each calling a different motor positions
+    char motor_topic_name[40]; //Name of topic advertised by raspberry pi
 
     ros::Publisher internal_states_data_out; //Publishes over topic "internal_states_out" so controller node can read
 

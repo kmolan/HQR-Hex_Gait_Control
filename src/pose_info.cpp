@@ -18,7 +18,7 @@ pose_info::pose_info() {
 
     log_subs.resize(15); //15 obstacles
 
-    for(unsigned short i = 0; i < log_subs.size(); i++){ //TODO: Sometimes one obstacle get updated multiple times in a single loop? Check.
+    for(unsigned short i = 0; i < log_subs.size(); i++){ //TODO: Sometimes one obstacle gets updated multiple times in a single loop? Check.
         sprintf(obs_name, "/vicon/LOG_%02d_10292019/pose", i + 1); //Create a string for the obstacle name
 
         log_subs[i] = n_.subscribe<geometry_msgs::PoseStamped>(obs_name, 1, boost::bind(&pose_info::find_log_positions, this, _1, i)); //Fill the log_positions array with obstacle positions
@@ -97,6 +97,7 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
     vicon_data_out_var.LF_obs_pos = LF_obs_distance;
     vicon_data_out_var.LF_obs_pos = LF_obs_distance;
     vicon_data_out_var.LF_obs_pos = LF_obs_distance;
+    vicon_data_out_var.body_yaw_angle = yaw;
     vicon_data_out_var.LF_Hip_pose = LF_Hip;
     vicon_data_out_var.LF_Hip_pose = RF_Hip;
     vicon_data_out_var.LF_Hip_pose = RR_Hip;

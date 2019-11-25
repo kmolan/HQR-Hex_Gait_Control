@@ -22,6 +22,7 @@ Written by Anmol Kathail (anmolk@seas.upenn.edu) **/
  * float64 RF_obs_pos
  * float64 RR_obs_pos
  * float64 LR_obs_pos
+ * float64 body_yaw_angle
  * geometry_msgs/PoseStamped LF_Hip_pose
  * geometry_msgs/PoseStamped RF_Hip_pose
  * geometry_msgs/PoseStamped RR_Hip_pose
