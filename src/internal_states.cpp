@@ -19,7 +19,7 @@ internal_states::internal_states(){
     motor_RR_pos_subs = is.subscribe(motor_RR_pos_name, 1, &internal_states::RR_pose_callback, this);
     motor_LR_pos_subs = is.subscribe(motor_LR_pos_name, 1, &internal_states::LR_pose_callback, this);
 
-    internal_states_data_out = is.advertise<hqrhex_control::internal_states_msg>("internal_states_data_out", 1);
+    internal_states_data_out = is.advertise<hqrhex_control::internal_states_msg>("internal_states_data_out", 1); //TODO: messages are not building error
 }
 
 void internal_states::LF_pose_callback(const std_msgs::Float64::ConstPtr &pose_msg) {

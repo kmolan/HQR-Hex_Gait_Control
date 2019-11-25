@@ -33,7 +33,7 @@ pose_info::pose_info() {
     RR_Hip_pub =  n_.advertise<geometry_msgs::PoseStamped>("RR_Hip_pose", 1); //publishes the position of the RR Hip
     LR_Hip_pub =  n_.advertise<geometry_msgs::PoseStamped>("LR_Hip_pose", 1); //publishes the position of the LR Hip
 
-    vicon_data_out = n_.advertise<hqrhex_control::pose_info_msg>("vicon_data_out", 1);
+    vicon_data_out = n_.advertise<hqrhex_control::pose_info_msg>("vicon_data_out", 1); //TODO: messages are not building error
 }
 
 void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_msg) {
