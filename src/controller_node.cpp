@@ -71,7 +71,7 @@ void controller_node::vicon_callback(const hqrhex_control::pose_info_msg &msg) {
 void controller_node::CalculateContactAngles() {
 
 //    theta[0] = getTheta(LF_motor_pos, LF_Hip_pose, LF_obs_pos); //TODO: Fix the message generation issue
-//    theta[1] = getTheta(RF_motor_pos, RF_Hip_pose, RF_obs_pos);
+//    theta[1] = getTheta(RF_motor_pos, RF_Hip_pose, RF_obs_pos); //TODO: Find a prettier way to do this
 //    theta[2] = getTheta(RR_motor_pos, RR_Hip_pose, RR_obs_pos);
 //    theta[3] = getTheta(LR_motor_pos, LR_Hip_pose, LR_obs_pos);
 

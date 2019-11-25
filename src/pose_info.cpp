@@ -123,9 +123,9 @@ void pose_info::transformation_matrices(double roll, double pitch, double yaw, E
     Eigen::Matrix4f yaw_tf;
     Eigen::Matrix4f translate_tf;
 
-    roll_tf << 1, 0, 0, 0, 0, std::cos(roll), -std::sin(roll), 0, 0, std::sin(roll), std::cos(roll), 0, 0, 0, 0, 1;
-    pitch_tf << std::cos(pitch), 0, std::sin(pitch), 0, 0, 1, 0, 0, -std::sin(pitch), 0, std::cos(pitch), 0, 0, 0, 0 ,1;
-    yaw_tf << std::cos(yaw), -std::sin(yaw), 0, 0, std::sin(yaw), std::cos(yaw), 0 ,0, 0, 0, 1, 0, 0, 0, 0, 1;
+    roll_tf << 1, 0, 0, 0, 0, std::cos(roll), -std::sin(roll), 0, 0, std::sin(roll), std::cos(roll), 0, 0, 0, 0, 1; //roll 3-D matrix
+    pitch_tf << std::cos(pitch), 0, std::sin(pitch), 0, 0, 1, 0, 0, -std::sin(pitch), 0, std::cos(pitch), 0, 0, 0, 0 ,1; //pitch 3-D matrix
+    yaw_tf << std::cos(yaw), -std::sin(yaw), 0, 0, std::sin(yaw), std::cos(yaw), 0 ,0, 0, 0, 1, 0, 0, 0, 0, 1; //yaw 3-D matrix
 
     *transformation_matrix = yaw_tf*pitch_tf*roll_tf;
 }
@@ -141,8 +141,9 @@ void pose_info::getCoM(double x, double y, double z, const Eigen::Matrix4f& tran
     translation_back << 1, 0, 0, x, 0, 1, 0 ,y, 0, 0, 1, z, 0, 0, 0, 1;
 
     temp_pos << x, y, z, 1;
-    temp_pos = translation_back*transformation_matrix*translation_to_origin*translation_matrix*temp_pos;
+    temp_pos = translation_back*transformation_matrix*translation_to_origin*translation_matrix*temp_pos; //true robot CoM
 
+    //return via reference
     add_com_tf->pose.position.x = temp_pos(0,0);
     add_com_tf->pose.position.y = temp_pos(1,0);
     add_com_tf->pose.position.z = temp_pos(2,0);
@@ -156,6 +157,7 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
     translation_to_origin << 1, 0, 0, -com_tf.pose.position.x, 0, 1, 0 ,-com_tf.pose.position.y, 0, 0, 1, -com_tf.pose.position.z, 0, 0, 0, 1;
     translation_back << 1, 0, 0, com_tf.pose.position.x, 0, 1, 0 ,com_tf.pose.position.y, 0, 0, 1, com_tf.pose.position.z, 0, 0, 0, 1;
 
+    //LF hip pose
     temp_pos << com_tf.pose.position.x - robot_length / 2, com_tf.pose.position.y - robot_width / 2, com_tf.pose.position.z - hip_offset, 1;
     temp_pos = translation_back*transformation_matrix*translation_to_origin*temp_pos;
 
@@ -165,6 +167,7 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
 
     add_LF_Hip->pose.orientation = com_tf.pose.orientation;
 
+    //RF hip pose
     temp_pos << com_tf.pose.position.x - robot_length / 2, com_tf.pose.position.y + robot_width / 2, com_tf.pose.position.z - hip_offset, 1;
     temp_pos = translation_back*transformation_matrix*translation_to_origin*temp_pos;
 
@@ -174,6 +177,7 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
 
     add_RF_Hip->pose.orientation = com_tf.pose.orientation;
 
+    //RR hip pose
     temp_pos << com_tf.pose.position.x + robot_length / 2, com_tf.pose.position.y + robot_width / 2, com_tf.pose.position.z - hip_offset, 1;
     temp_pos = translation_back*transformation_matrix*translation_to_origin*temp_pos;
 
@@ -183,6 +187,7 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
 
     add_RR_Hip->pose.orientation = com_tf.pose.orientation;
 
+    //LR hip pose
     temp_pos << com_tf.pose.position.x + robot_length / 2, com_tf.pose.position.y - robot_width / 2, com_tf.pose.position.z - hip_offset, 1;
     temp_pos = translation_back*transformation_matrix*translation_to_origin*temp_pos;
 
@@ -193,11 +198,13 @@ void pose_info::getHips(const geometry_msgs::PoseStamped& com_tf, const Eigen::M
     add_LR_Hip->pose.orientation = com_tf.pose.orientation;
 }
 
+//Update log positions
 void pose_info::find_log_positions(const geometry_msgs::PoseStamped::ConstPtr &msg, int i){
 
     this->log_positions[i] = msg->pose.position.x;
 }
 
+//Find closest obstacle to each hip
 void pose_info::closestObstacle(double LF_x, double RF_x, double RR_x, double LR_x, int *LF_obs, int *RF_obs, int *RR_obs, int *LR_obs, double* LF_obs_dist, double* RF_obs_dist, double* RR_obs_dist, double* LR_obs_dist) {
 
     *LF_obs_dist = FLT_MAX;

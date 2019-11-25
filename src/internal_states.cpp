@@ -20,6 +20,7 @@ internal_states::internal_states(){
     internal_states_data_out = is.advertise<hqrhex_control::internal_states_msg>("internal_states_data_out", 1); //TODO: messages are not building error
 }
 
+//Update motor positions, send it to controller node
 void internal_states::update_motor_position(const std_msgs::Float64::ConstPtr &pose_msg, int i){
     switch(i){
         case 0: dataout_msg.LF_motor_pos = pose_msg->data;

@@ -99,19 +99,19 @@ private:
     double leg_radius; //robot leg radius
     double obstacle_radius; //obstacle radius
 
-    double LF_obs_pos; //position of the obstacle closest to each hip (4)
+    double LF_obs_pos; //position of the obstacle closest to each hip (4) //TODO: create vectors instead
     double RF_obs_pos;
     double RR_obs_pos;
     double LR_obs_pos;
 
     double body_yaw_angle; //yaw angle of the robot CoM
 
-    geometry_msgs::PoseStamped LF_Hip_pose; //pose of each leg hip (4)
+    geometry_msgs::PoseStamped LF_Hip_pose; //pose of each leg hip (4) //TODO: create vectors instead
     geometry_msgs::PoseStamped RF_Hip_pose;
     geometry_msgs::PoseStamped RR_Hip_pose;
     geometry_msgs::PoseStamped LR_Hip_pose;
 
-    double LF_motor_pos; //motor position of each leg hip (4)
+    double LF_motor_pos; //motor position of each leg hip (4) //TODO: create vectors instead
     double RF_motor_pos;
     double RR_motor_pos;
     double LR_motor_pos;
