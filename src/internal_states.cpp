@@ -12,7 +12,7 @@ internal_states::internal_states(){
     motor_pos_subs.resize(4); //4 motors
     dataout_msg.data.resize(4);
 
-    for(unsigned short i = 0; i < motor_pos_subs.size(); i++){ //TODO: Sometimes one motor gets updated multiple times in a single loop? Check.
+    for(unsigned short i = 0; i < motor_pos_subs.size(); i++){
         sprintf(motor_topic_name, "motor_%02d_", i); //Create a string for the motor name. Starts from Left front (0) and cycles CCW
 
         motor_pos_subs[i] = is.subscribe<std_msgs::Float64>(motor_topic_name, 1, boost::bind(&internal_states::update_motor_position, this, _1, i)); //Updates each motor position and publishes it
@@ -29,8 +29,6 @@ void internal_states::update_motor_position(const std_msgs::Float64::ConstPtr &p
     }
 
     dataout_msg.data[i] = pose_msg->data;
-
-    debug();
 }
 
 void internal_states::publisher_callback() {
@@ -45,6 +43,17 @@ int main(int argc, char ** argv) {
     ros::init(argc, argv, "internal_states");
     ros::NodeHandle is;
     internal_states class_init;
-    ros::spin();
+
+    ros::Rate loop_rate(100); //frequency of updating node publishers
+
+    while (ros::ok())
+    {
+        class_init.publisher_callback();
+        class_init.debug();
+
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+
     return 0;
 }

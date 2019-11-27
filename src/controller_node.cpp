@@ -70,8 +70,6 @@ void controller_node::vicon_callback_obs(const std_msgs::Float64MultiArray::Cons
     for(auto i = 0; i < msg->data.size(); i++){ //update the obstacle pose vector
         obstacles_pos[i] = msg->data[i];
     }
-
-    debug(); //print stuff on console
 }
 
 
@@ -185,8 +183,18 @@ void controller_node::publisher_callback() {
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "controller_node");
     ros::NodeHandle cn;
-    controller_node node;
+    controller_node control_node;
 
-    ros::spin();
+    ros::Rate loop_rate(100); //frequency of updating node publishers
+
+    while (ros::ok())
+    {
+        control_node.publisher_callback();
+        control_node.debug();
+
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+
     return 0;
 }

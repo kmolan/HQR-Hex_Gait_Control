@@ -81,10 +81,6 @@ void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_m
     getHips(robot_body_com, transformation_matrix, LF_Hip, RF_Hip, RR_Hip, LR_Hip); //Gets the hip coordinates for all 4 legs
 
     closestObstacle(LF_Hip.position.x, RF_Hip.position.x, RR_Hip.position.x, LR_Hip.position.x, LF_obs_index, RF_obs_index, RR_obs_index, LR_obs_index, LF_obs_distance, RF_obs_distance, RR_obs_distance, LR_obs_distance); //Returns the closest obstacle to each hip
-
-    updatemessages();
-    debug();
-    publisher_callback();
 }
 
 void pose_info::quat_2_euler(const geometry_msgs::Quaternion msg, double& add_roll, double& add_pitch, double& add_yaw) {
@@ -259,6 +255,17 @@ int main(int argc, char ** argv) {
     ros::NodeHandle n;
     pose_info pi;
 
-    ros::spin();
+    ros::Rate loop_rate(100); //frequency of updating node publishers
+
+    while (ros::ok())
+    {
+        pi.updatemessages();
+        pi.publisher_callback();
+        pi.debug();
+
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+
     return 0;
 }
