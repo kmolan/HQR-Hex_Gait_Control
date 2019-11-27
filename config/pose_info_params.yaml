@@ -6,3 +6,5 @@ robot_length: 0.48
 robot_width: 0.29
 hip_offset: 0.05
 
+numberOfObstacles: 15 #number of obstacles in the workspace
+

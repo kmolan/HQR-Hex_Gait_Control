@@ -11,13 +11,7 @@
 #include <cmath>
 #include <string>
 #include <std_msgs/Float64.h>
-
-/* custom msg type, container for the position of 4 motors
-    * float64 LF_motor_pos
-    * float64 RF_motor_pos
-    * float64 RR_motor_pos
-    * float64 LR_motor_pos */
-#include "hqrhex_control/internal_states_msg.h"
+#include <std_msgs/Float64MultiArray.h>
 
 class internal_states{
 public:
@@ -27,20 +21,30 @@ public:
     internal_states();
 
     /*!
+     * @brief prints stuff on console for debugging purposes
+     */
+    void debug();
+
+    /*!
+     * @brief calls all the publishers in the class
+     */
+    void publisher_callback();
+
+private:
+
+    /*!
      * @brief Updates the position of each leg motor, bundles it into a custom msg, and publishes for controller node to handle
      * @param pose_msg leg motor angle
      * @param i iterator (0 is for Right Front hip motor, and cycles CCW)
      */
     void update_motor_position(const std_msgs::Float64::ConstPtr &pose_msg, int i);
 
-private:
+    ros::NodeHandle is; ///< Node Handle
 
-    ros::NodeHandle is; //Node Handle initialization
+    std::vector<ros::Subscriber> motor_pos_subs; ///< Multiple Subscribers each calling a different motor positions
+    char motor_topic_name[40]; ///< Name of topic advertised by raspberry pi
 
-    std::vector<ros::Subscriber> motor_pos_subs; //Multiple Subscribers each calling a different motor positions
-    char motor_topic_name[40]; //Name of topic advertised by raspberry pi
+    ros::Publisher internal_states_data_out; ///< Publishes over topic "internal_states_out" so controller node can read
 
-    ros::Publisher internal_states_data_out; //Publishes over topic "internal_states_out" so controller node can read
-
-    hqrhex_control::internal_states_msg dataout_msg;
+    std_msgs::Float64MultiArray dataout_msg; ///< bundled message that controller node can read
 };

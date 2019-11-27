@@ -17,16 +17,16 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(Eigen3 REQUIRED)
 
-add_message_files(
-    FILES
-    pose_info_msg.msg
-    internal_states_msg.msg
-)
+#add_message_files(
+#    FILES
+#    pose_info_msg.msg
+#    internal_states_msg.msg
+#)
 
-generate_messages(
-    DEPENDENCIES
-    geometry_msgs std_msgs
-)
+#generate_messages(
+#    DEPENDENCIES
+#    geometry_msgs std_msgs
+#)
 
 catkin_package(
   CATKIN_DEPENDS message_runtime std_msgs geometry_msgs
@@ -34,7 +34,6 @@ catkin_package(
 
 include_directories(
   include
-  msg
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIRS}
 )
@@ -55,6 +54,6 @@ target_link_libraries(controller_node
     ${catkin_LIBRARIES}
 )
 
-add_dependencies(pose_info hqrhex_control_generate_messages_cpp)
-add_dependencies(internal_states hqrhex_control_generate_messages_cpp)
-add_dependencies(controller_node hqrhex_control_generate_messages_cpp)
+#add_dependencies(pose_info hqrhex_control_generate_messages_cpp)
+#add_dependencies(internal_states hqrhex_control_generate_messages_cpp)
+#add_dependencies(controller_node hqrhex_control_generate_messages_cpp)

@@ -2,3 +2,4 @@ float64 LF_motor_pos
 float64 RF_motor_pos
 float64 RR_motor_pos
 float64 LR_motor_pos
+float64 motor_freq

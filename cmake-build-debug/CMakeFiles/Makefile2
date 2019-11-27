@@ -56,35 +56,23 @@ CMAKE_BINARY_DIR = /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debu
 all: CMakeFiles/controller_node.dir/all
 all: CMakeFiles/pose_info.dir/all
 all: CMakeFiles/internal_states.dir/all
-all: CMakeFiles/hqrhex_control_generate_messages.dir/all
 all: gtest/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
 clean: CMakeFiles/controller_node.dir/clean
-clean: CMakeFiles/hqrhex_control_genpy.dir/clean
 clean: CMakeFiles/pose_info.dir/clean
-clean: CMakeFiles/hqrhex_control_generate_messages_py.dir/clean
-clean: CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/clean
-clean: CMakeFiles/hqrhex_control_gennodejs.dir/clean
-clean: CMakeFiles/hqrhex_control_genlisp.dir/clean
-clean: CMakeFiles/hqrhex_control_generate_messages_lisp.dir/clean
-clean: CMakeFiles/hqrhex_control_geneus.dir/clean
 clean: CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 clean: CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-clean: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/clean
 clean: CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 clean: CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 clean: CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 clean: CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 clean: CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-clean: CMakeFiles/hqrhex_control_gencpp.dir/clean
 clean: CMakeFiles/std_msgs_generate_messages_py.dir/clean
 clean: CMakeFiles/internal_states.dir/clean
 clean: CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-clean: CMakeFiles/hqrhex_control_generate_messages_eus.dir/clean
-clean: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/clean
 clean: CMakeFiles/nav_msgs_generate_messages_py.dir/clean
 clean: CMakeFiles/ackermann_msgs_generate_messages_nodejs.dir/clean
 clean: CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
@@ -110,7 +98,6 @@ clean: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 clean: CMakeFiles/ackermann_msgs_generate_messages_lisp.dir/clean
 clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
-clean: CMakeFiles/hqrhex_control_generate_messages.dir/clean
 clean: CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
 clean: CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 clean: CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
@@ -118,7 +105,6 @@ clean: CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
 clean: CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
 clean: CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
 clean: CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
-clean: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/clean
 clean: CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
 clean: CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 clean: CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
@@ -136,7 +122,7 @@ preinstall: gtest/preinstall
 # Target rules for target CMakeFiles/controller_node.dir
 
 # All Build rule for target.
-CMakeFiles/controller_node.dir/all: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
+CMakeFiles/controller_node.dir/all:
 	$(MAKE) -f CMakeFiles/controller_node.dir/build.make CMakeFiles/controller_node.dir/depend
 	$(MAKE) -f CMakeFiles/controller_node.dir/build.make CMakeFiles/controller_node.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target controller_node"
@@ -144,7 +130,7 @@ CMakeFiles/controller_node.dir/all: CMakeFiles/hqrhex_control_generate_messages_
 
 # Build rule for subdir invocation for target.
 CMakeFiles/controller_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/controller_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/controller_node.dir/rule
@@ -160,45 +146,18 @@ CMakeFiles/controller_node.dir/clean:
 .PHONY : CMakeFiles/controller_node.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_genpy.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_genpy.dir/all: CMakeFiles/hqrhex_control_generate_messages_py.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_genpy.dir/build.make CMakeFiles/hqrhex_control_genpy.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_genpy.dir/build.make CMakeFiles/hqrhex_control_genpy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target hqrhex_control_genpy"
-.PHONY : CMakeFiles/hqrhex_control_genpy.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_genpy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_genpy.dir/rule
-
-# Convenience name for target.
-hqrhex_control_genpy: CMakeFiles/hqrhex_control_genpy.dir/rule
-
-.PHONY : hqrhex_control_genpy
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_genpy.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_genpy.dir/build.make CMakeFiles/hqrhex_control_genpy.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_genpy.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/pose_info.dir
 
 # All Build rule for target.
-CMakeFiles/pose_info.dir/all: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
+CMakeFiles/pose_info.dir/all:
 	$(MAKE) -f CMakeFiles/pose_info.dir/build.make CMakeFiles/pose_info.dir/depend
 	$(MAKE) -f CMakeFiles/pose_info.dir/build.make CMakeFiles/pose_info.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=28,29 "Built target pose_info"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=16,17 "Built target pose_info"
 .PHONY : CMakeFiles/pose_info.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pose_info.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pose_info.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/pose_info.dir/rule
@@ -212,177 +171,6 @@ pose_info: CMakeFiles/pose_info.dir/rule
 CMakeFiles/pose_info.dir/clean:
 	$(MAKE) -f CMakeFiles/pose_info.dir/build.make CMakeFiles/pose_info.dir/clean
 .PHONY : CMakeFiles/pose_info.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_generate_messages_py.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_generate_messages_py.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_py.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
-CMakeFiles/hqrhex_control_generate_messages_py.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_py.dir/all: CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_py.dir/build.make CMakeFiles/hqrhex_control_generate_messages_py.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_py.dir/build.make CMakeFiles/hqrhex_control_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=23,24,25 "Built target hqrhex_control_generate_messages_py"
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_py.dir/rule
-
-# Convenience name for target.
-hqrhex_control_generate_messages_py: CMakeFiles/hqrhex_control_generate_messages_py.dir/rule
-
-.PHONY : hqrhex_control_generate_messages_py
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_generate_messages_py.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_py.dir/build.make CMakeFiles/hqrhex_control_generate_messages_py.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_generate_messages_nodejs.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all: CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all: CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/build.make CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/build.make CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=21,22 "Built target hqrhex_control_generate_messages_nodejs"
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-hqrhex_control_generate_messages_nodejs: CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/rule
-
-.PHONY : hqrhex_control_generate_messages_nodejs
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/build.make CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_gennodejs.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_gennodejs.dir/all: CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_gennodejs.dir/build.make CMakeFiles/hqrhex_control_gennodejs.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_gennodejs.dir/build.make CMakeFiles/hqrhex_control_gennodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target hqrhex_control_gennodejs"
-.PHONY : CMakeFiles/hqrhex_control_gennodejs.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_gennodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_gennodejs.dir/rule
-
-# Convenience name for target.
-hqrhex_control_gennodejs: CMakeFiles/hqrhex_control_gennodejs.dir/rule
-
-.PHONY : hqrhex_control_gennodejs
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_gennodejs.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_gennodejs.dir/build.make CMakeFiles/hqrhex_control_gennodejs.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_gennodejs.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_genlisp.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_genlisp.dir/all: CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_genlisp.dir/build.make CMakeFiles/hqrhex_control_genlisp.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_genlisp.dir/build.make CMakeFiles/hqrhex_control_genlisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target hqrhex_control_genlisp"
-.PHONY : CMakeFiles/hqrhex_control_genlisp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_genlisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_genlisp.dir/rule
-
-# Convenience name for target.
-hqrhex_control_genlisp: CMakeFiles/hqrhex_control_genlisp.dir/rule
-
-.PHONY : hqrhex_control_genlisp
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_genlisp.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_genlisp.dir/build.make CMakeFiles/hqrhex_control_genlisp.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_genlisp.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_generate_messages_lisp.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_lisp.dir/build.make CMakeFiles/hqrhex_control_generate_messages_lisp.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_lisp.dir/build.make CMakeFiles/hqrhex_control_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=19,20 "Built target hqrhex_control_generate_messages_lisp"
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-hqrhex_control_generate_messages_lisp: CMakeFiles/hqrhex_control_generate_messages_lisp.dir/rule
-
-.PHONY : hqrhex_control_generate_messages_lisp
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_generate_messages_lisp.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_lisp.dir/build.make CMakeFiles/hqrhex_control_generate_messages_lisp.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_lisp.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_geneus.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_geneus.dir/all: CMakeFiles/hqrhex_control_generate_messages_eus.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_geneus.dir/build.make CMakeFiles/hqrhex_control_geneus.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_geneus.dir/build.make CMakeFiles/hqrhex_control_geneus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target hqrhex_control_geneus"
-.PHONY : CMakeFiles/hqrhex_control_geneus.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_geneus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_geneus.dir/rule
-
-# Convenience name for target.
-hqrhex_control_geneus: CMakeFiles/hqrhex_control_geneus.dir/rule
-
-.PHONY : hqrhex_control_geneus
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_geneus.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_geneus.dir/build.make CMakeFiles/hqrhex_control_geneus.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_geneus.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/sensor_msgs_generate_messages_py.dir
@@ -437,33 +225,6 @@ sensor_msgs_generate_messages_eus: CMakeFiles/sensor_msgs_generate_messages_eus.
 CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
 	$(MAKE) -f CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 .PHONY : CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir
-
-# All Build rule for target.
-CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all:
-	$(MAKE) -f CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/build.make CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/depend
-	$(MAKE) -f CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/build.make CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target _hqrhex_control_generate_messages_check_deps_internal_states_msg"
-.PHONY : CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/rule
-
-# Convenience name for target.
-_hqrhex_control_generate_messages_check_deps_internal_states_msg: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/rule
-
-.PHONY : _hqrhex_control_generate_messages_check_deps_internal_states_msg
-
-# clean rule for target.
-CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/clean:
-	$(MAKE) -f CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/build.make CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/clean
-.PHONY : CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/sensor_msgs_generate_messages_cpp.dir
@@ -601,33 +362,6 @@ CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
 .PHONY : CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_gencpp.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_gencpp.dir/all: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_gencpp.dir/build.make CMakeFiles/hqrhex_control_gencpp.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_gencpp.dir/build.make CMakeFiles/hqrhex_control_gencpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target hqrhex_control_gencpp"
-.PHONY : CMakeFiles/hqrhex_control_gencpp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_gencpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_gencpp.dir/rule
-
-# Convenience name for target.
-hqrhex_control_gencpp: CMakeFiles/hqrhex_control_gencpp.dir/rule
-
-.PHONY : hqrhex_control_gencpp
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_gencpp.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_gencpp.dir/build.make CMakeFiles/hqrhex_control_gencpp.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_gencpp.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/std_msgs_generate_messages_py.dir
 
 # All Build rule for target.
@@ -658,15 +392,15 @@ CMakeFiles/std_msgs_generate_messages_py.dir/clean:
 # Target rules for target CMakeFiles/internal_states.dir
 
 # All Build rule for target.
-CMakeFiles/internal_states.dir/all: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
+CMakeFiles/internal_states.dir/all:
 	$(MAKE) -f CMakeFiles/internal_states.dir/build.make CMakeFiles/internal_states.dir/depend
 	$(MAKE) -f CMakeFiles/internal_states.dir/build.make CMakeFiles/internal_states.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=26,27 "Built target internal_states"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=14,15 "Built target internal_states"
 .PHONY : CMakeFiles/internal_states.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/internal_states.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/internal_states.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/internal_states.dir/rule
@@ -707,63 +441,6 @@ std_msgs_generate_messages_nodejs: CMakeFiles/std_msgs_generate_messages_nodejs.
 CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
 	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 .PHONY : CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_generate_messages_eus.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_generate_messages_eus.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_eus.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_eus.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
-CMakeFiles/hqrhex_control_generate_messages_eus.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_eus.dir/build.make CMakeFiles/hqrhex_control_generate_messages_eus.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_eus.dir/build.make CMakeFiles/hqrhex_control_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=16,17,18 "Built target hqrhex_control_generate_messages_eus"
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-hqrhex_control_generate_messages_eus: CMakeFiles/hqrhex_control_generate_messages_eus.dir/rule
-
-.PHONY : hqrhex_control_generate_messages_eus
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_generate_messages_eus.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_eus.dir/build.make CMakeFiles/hqrhex_control_generate_messages_eus.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_eus.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir
-
-# All Build rule for target.
-CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all:
-	$(MAKE) -f CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/build.make CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/depend
-	$(MAKE) -f CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/build.make CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target _hqrhex_control_generate_messages_check_deps_pose_info_msg"
-.PHONY : CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/rule
-
-# Convenience name for target.
-_hqrhex_control_generate_messages_check_deps_pose_info_msg: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/rule
-
-.PHONY : _hqrhex_control_generate_messages_check_deps_pose_info_msg
-
-# clean rule for target.
-CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/clean:
-	$(MAKE) -f CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/build.make CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/clean
-.PHONY : CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/nav_msgs_generate_messages_py.dir
@@ -1441,37 +1118,6 @@ CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
 .PHONY : CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_generate_messages.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_generate_messages.dir/all: CMakeFiles/hqrhex_control_generate_messages_py.dir/all
-CMakeFiles/hqrhex_control_generate_messages.dir/all: CMakeFiles/hqrhex_control_generate_messages_nodejs.dir/all
-CMakeFiles/hqrhex_control_generate_messages.dir/all: CMakeFiles/hqrhex_control_generate_messages_lisp.dir/all
-CMakeFiles/hqrhex_control_generate_messages.dir/all: CMakeFiles/hqrhex_control_generate_messages_eus.dir/all
-CMakeFiles/hqrhex_control_generate_messages.dir/all: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages.dir/build.make CMakeFiles/hqrhex_control_generate_messages.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages.dir/build.make CMakeFiles/hqrhex_control_generate_messages.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num= "Built target hqrhex_control_generate_messages"
-.PHONY : CMakeFiles/hqrhex_control_generate_messages.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 12
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_generate_messages.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_generate_messages.dir/rule
-
-# Convenience name for target.
-hqrhex_control_generate_messages: CMakeFiles/hqrhex_control_generate_messages.dir/rule
-
-.PHONY : hqrhex_control_generate_messages
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_generate_messages.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages.dir/build.make CMakeFiles/hqrhex_control_generate_messages.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_generate_messages.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/nav_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
@@ -1659,36 +1305,6 @@ actionlib_msgs_generate_messages_lisp: CMakeFiles/actionlib_msgs_generate_messag
 CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean:
 	$(MAKE) -f CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
 .PHONY : CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/hqrhex_control_generate_messages_cpp.dir
-
-# All Build rule for target.
-CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_internal_states_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all: CMakeFiles/_hqrhex_control_generate_messages_check_deps_pose_info_msg.dir/all
-CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all: CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_cpp.dir/build.make CMakeFiles/hqrhex_control_generate_messages_cpp.dir/depend
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_cpp.dir/build.make CMakeFiles/hqrhex_control_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles --progress-num=14,15 "Built target hqrhex_control_generate_messages_cpp"
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hqrhex_control_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hqrhex_control_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anmolk/kodlab/src/HQR-Hex_Gait_Control/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-hqrhex_control_generate_messages_cpp: CMakeFiles/hqrhex_control_generate_messages_cpp.dir/rule
-
-.PHONY : hqrhex_control_generate_messages_cpp
-
-# clean rule for target.
-CMakeFiles/hqrhex_control_generate_messages_cpp.dir/clean:
-	$(MAKE) -f CMakeFiles/hqrhex_control_generate_messages_cpp.dir/build.make CMakeFiles/hqrhex_control_generate_messages_cpp.dir/clean
-.PHONY : CMakeFiles/hqrhex_control_generate_messages_cpp.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/actionlib_msgs_generate_messages_py.dir

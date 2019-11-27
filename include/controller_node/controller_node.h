@@ -5,7 +5,7 @@
 #pragma once
 
 #include <ros/ros.h>
-#include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/Pose.h>
 #include <ros/ros.h>
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Quaternion.h>
@@ -17,9 +17,8 @@
 #include <complex>
 #include <std_msgs/Float64.h>
 #include <std_msgs/Bool.h>
-
-#include "hqrhex_control/internal_states_msg.h"
-#include "hqrhex_control/pose_info_msg.h"
+#include <std_msgs/Float64MultiArray.h>
+#include <geometry_msgs/PoseArray.h>
 
 class controller_node{
 public:
@@ -31,16 +30,31 @@ public:
 
     /*!
      * @brief subscribes to the motion capture workspace data and updates member variables accordingly
-     * @param msg container for all the incoming data, contains position of each closest obstacle (double),
-     * pose of each leg hip (gemoetry_msgs::PoseStamped), and body yaw angle (double)
-     */
-    void vicon_callback(const hqrhex_control::pose_info_msg &msg);
+     * @param msg container for the incoming data, contains pose of each leg hip (geometry_msgs::PoseStamped) */
+    void vicon_callback_hips(const geometry_msgs::PoseArray::ConstPtr &msg);
+
+    /*!
+     * @brief subscribes to the motion capture workspace data and updates member variables accordingly
+     * @param msg container for the incoming data, contains closest obstacle position to each hip (double) */
+    void vicon_callback_obs(const std_msgs::Float64MultiArray::ConstPtr &msg);
 
     /*!
      * @brief subscribes to the internal robot states as broadcasted by raspberry pi, updates member variables accordingly
      * @param msg container for position for each of the leg motor positions (double)
      */
-    void internal_states_callback(const hqrhex_control::internal_states_msg &msg);
+    void internal_states_callback(const std_msgs::Float64MultiArray::ConstPtr &msg);
+
+    /*!
+     * @brief calls all the publishers in the class
+     */
+    void publisher_callback();
+
+    /*!
+     * @brief prints stuff on console for debugging purposes
+     */
+    void debug();
+
+private:
 
     /*!
      * @brief Updates the contact angle of each hip based on kinematic parameters, calls getTheta()
@@ -78,53 +92,43 @@ public:
 
     /*!
      * @brief helper function to calculate L2 norm of two variables
-     * @param a first variable
-     * @param b second variable
+     * @param a [in] first variable
+     * @param b [in] second variable
      * @return L2 norm of a 2-D vector with (a,b) coordinates
      */
     static double eucDist(double a, double b);
 
-private:
+    ros::NodeHandle cn; ///< NodeHandle
 
-    ros::NodeHandle cn; //NodeHandle
+    ros::Publisher LF_Activation_Flag; ///< Tells raspberry pi to activate left front leg if true
+    ros::Publisher RF_Activation_Flag; ///< Tells raspberry pi to activate right front leg if true
+    ros::Publisher RR_Activation_Flag; ///< Tells raspberry pi to activate right rear leg if true
+    ros::Publisher LR_Activation_Flag; ///< Tells raspberry pi to activate left rear leg if true
 
-    ros::Publisher LF_Activation_Flag; //Tells raspberry pi to activate left front leg if true
-    ros::Publisher RF_Activation_Flag; //Tells raspberry pi to activate right front leg if true
-    ros::Publisher RR_Activation_Flag; //Tells raspberry pi to activate right rear leg if true
-    ros::Publisher LR_Activation_Flag; //Tells raspberry pi to activate left rear leg if true
+    ros::Subscriber vicon_data_hips_subs; ///< subscribes to the hips' motion capture workspace data
+    ros::Subscriber vicon_data_obs_subs; ///< subscribes to the closest obstacles' motion capture workspace data
+    ros::Subscriber internal_data_subs; ///< subscribes to robot's internal states data
 
-    ros::Subscriber vicon_data_subs; //subscribes to motion capture workspace data
-    ros::Subscriber internal_data_subs; //subcribes to robot's internal states data
+    double leg_radius; ///< robot leg radius
+    double obstacle_radius; ///< obstacle radius
 
-    double leg_radius; //robot leg radius
-    double obstacle_radius; //obstacle radius
+    std::vector<double> obstacles_pos; ///< position of the obstacles closest to each hip (4)
 
-    double LF_obs_pos; //position of the obstacle closest to each hip (4) //TODO: create vectors instead
-    double RF_obs_pos;
-    double RR_obs_pos;
-    double LR_obs_pos;
+    double body_yaw_angle; ///< yaw angle of the robot CoM
 
-    double body_yaw_angle; //yaw angle of the robot CoM
+    std::vector<geometry_msgs::Pose> hip_poses; ///< pose of each leg hip (4)
 
-    geometry_msgs::PoseStamped LF_Hip_pose; //pose of each leg hip (4) //TODO: create vectors instead
-    geometry_msgs::PoseStamped RF_Hip_pose;
-    geometry_msgs::PoseStamped RR_Hip_pose;
-    geometry_msgs::PoseStamped LR_Hip_pose;
+    std::vector<double> motor_pos; ///< motor positions for the 4 hips
 
-    double LF_motor_pos; //motor position of each leg hip (4) //TODO: create vectors instead
-    double RF_motor_pos;
-    double RR_motor_pos;
-    double LR_motor_pos;
+    double theta[4]; ///< predicted obstacle contact angle for each leg, -1 if infeasible
 
-    double theta[4]; //predicted obstacle contact angle for each leg, -1 if infeasible
+    double traj_loop_enter; ///< current time
+    double traj_loop_exit; ///< last time CalculateTrajectoryAngle() ran
+    double last_trajectory_angle; ///< last observed yaw angle when CalculateTrajectoryAngle() ran
+    double trajectory_loop_time; ///< duration to check if trajectory has stabilized
+    double trajectory_threshold; ///< threshold to check for yaw angle stability
 
-    double traj_loop_enter; //current time
-    double traj_loop_exit; //last time CalculateTrajectoryAngle() ran
-    double last_trajectory_angle; //last observed yaw angle when CalculateTrajectoryAngle() ran
-    double trajectory_loop_time; //duration to check if trajectory has stabilized
-    double trajectory_threshold; //threshold to check for yaw angle stability
-
-    double desired_yaw_angle; //desired steady yaw angle of the robot CoM
-    double trajectory_angle; //current steady yaw angle of the robot CoM
+    double desired_yaw_angle; ///< desired steady yaw angle of the robot CoM
+    double trajectory_angle; ///< current steady yaw angle of the robot CoM
 
 };

@@ -4,4 +4,6 @@ Code written for experiments under obstacle aided-locomotion and gait control, a
 
 The world information is estimated using the topics published by the VICON Motion Capture system (https://github.com/KumarRobotics/motion_capture_system), and the robot is controlled using the SDK library written by Ghost Robotics (https://ghostrobotics.gitlab.io/SDK).
 
-Collects pose and world information about the hexapedal HQR-Hex robot body using vicon system (done), computes the closest obstacle to each hip (done), and implements the relevant gait according to desired trajectory (still unwritten).
+1. Collects pose and world information about the robot body using vicon system (done) 
+2. Collects internal state information through raspberry pi (master done, slave unwritten)
+3. Controller node activates suitable legs (only skeleton)
