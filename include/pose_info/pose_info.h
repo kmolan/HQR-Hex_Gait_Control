@@ -53,7 +53,12 @@ public:
 
 private:
 
-        /*!
+    /*!
+     * @brief loads the parameters into appropriate class members
+     */
+    void loadParams();
+
+    /*!
      * @brief converts the incoming quaternion angles and returns corresponding euler angles via reference
      * @param msg [in] A struct with x,y,z,w components representing the quaternions
      * @param add_roll [out] The roll angle of the body

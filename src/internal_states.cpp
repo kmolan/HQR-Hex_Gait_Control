@@ -18,11 +18,15 @@ internal_states::internal_states(){
         motor_pos_subs[i] = is.subscribe<std_msgs::Float64>(motor_topic_name, 1, boost::bind(&internal_states::update_motor_position, this, _1, i)); //Updates each motor position and publishes it
     }
 
-    internal_states_data_out = is.advertise<std_msgs::Float64MultiArray>("internal_states_data_out", 1); //TODO: messages are not building error
+    internal_states_data_out = is.advertise<std_msgs::Float64MultiArray>("internal_states_data_out", 1); //send bundled message towards controller node
 }
 
 //Update motor positions and motor frequency
 void internal_states::update_motor_position(const std_msgs::Float64::ConstPtr &pose_msg, int i){
+
+    if(!pose_msg){
+        ROS_ERROR("In file internal_states, pose pointer is null for iterator %f", double(i));
+    }
 
     dataout_msg.data[i] = pose_msg->data;
 

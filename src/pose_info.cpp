@@ -8,15 +8,11 @@ pose_info::pose_info() {
 
     n_ = ros::NodeHandle(); //Initialize node handle
 
-    //Load all the parameters
-    n_.getParam("robot_length", robot_length);
-    n_.getParam("robot_width", robot_width);
-    n_.getParam("hip_offset", hip_offset);
-    n_.getParam("robot_name", robot_obj_name);
-    n_.getParam("numberOfObstacles", numberOfObstacles);
+    loadParams();
 
     pose_sub = n_.subscribe(robot_obj_name, 1, &pose_info::pose_callback, this); //Gets the position and orientation of body in vicon space
 
+    //initialize the arrays
     log_subs.resize(numberOfObstacles); //15 obstacles
     HipPoseArray.poses.resize(4);
     closestObstacleArray.data.resize(4);
@@ -34,8 +30,37 @@ pose_info::pose_info() {
     RR_Hip_pub =  n_.advertise<geometry_msgs::Pose>("RR_Hip_pose", 1); //publishes the position of the RR Hip
     LR_Hip_pub =  n_.advertise<geometry_msgs::Pose>("LR_Hip_pose", 1); //publishes the position of the LR Hip
 
-    vicon_data_out_hips = n_.advertise<geometry_msgs::PoseArray>("vicon_data_out_hips", 1);
-    vicon_data_out_obs = n_.advertise<std_msgs::Float64MultiArray>("vicon_data_out_obs", 1);
+    vicon_data_out_hips = n_.advertise<geometry_msgs::PoseArray>("vicon_data_out_hips", 1); //vector of hip pose array to controller node
+    vicon_data_out_obs = n_.advertise<std_msgs::Float64MultiArray>("vicon_data_out_obs", 1); //vector of obstacle pose array to controller node
+}
+
+//Load all the parameters
+void pose_info::loadParams(){
+    n_.getParam("robot_length", robot_length);
+    n_.getParam("robot_width", robot_width);
+    n_.getParam("hip_offset", hip_offset);
+    n_.getParam("robot_name", robot_obj_name);
+    n_.getParam("numberOfObstacles", numberOfObstacles);
+
+    if(!n_.getParam("robot_length", robot_length)){
+        ROS_ERROR("In file pose_info robot_length is undefined");
+    }
+
+    if(!n_.getParam("robot_width", robot_width)){
+        ROS_ERROR("In file pose_info robot_width is undefined");
+    }
+
+    if(!n_.getParam("hip_offset", hip_offset)){
+        ROS_ERROR("In file pose_info hip_offset is undefined");
+    }
+
+    if(!n_.getParam("robot_name", robot_obj_name)){
+        ROS_ERROR("In file pose_info robot_name is undefined");
+    }
+
+    if(!n_.getParam("numberOfObstacles", numberOfObstacles)){
+        ROS_ERROR("In file pose_info numberOfObstacles is undefined");
+    }
 }
 
 void pose_info::pose_callback(const geometry_msgs::PoseStamped::ConstPtr &pose_msg) {
@@ -158,6 +183,10 @@ void pose_info::getHips(const geometry_msgs::Pose& com_tf_var, const Eigen::Matr
 void pose_info::find_log_positions(const geometry_msgs::PoseStamped::ConstPtr &msg, int i){
 
     log_positions[i] = msg->pose.position.x;
+
+    if(!msg){
+        ROS_ERROR("In file pose_info, obstacle pointer for iterator %f is null", double(i));
+    }
 }
 
 //Find closest obstacle to each hip
